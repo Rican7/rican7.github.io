@@ -1,31 +1,54 @@
 // bower:scss
 // endbower
 
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
 body {
-  background: #fafafa;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #999;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #333;
 }
 
-.hero-unit {
-  margin: 50px auto 0 auto;
-  width: 300px;
+a {
+  text-decoration: none;
+}
+
+.hero-container {
+  margin: 20px 0;
+  max-width: 300px;
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
-  background-color: #eee;
+  background-color: #ddd;
   border-radius: 6px;
-  padding: 60px;
-  h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-}
+  box-shadow: 0px 0px 2px 2px #ddd;
+  padding: 10px;
+  text-align: center;
 
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+  h1 {
+    font-size: 36px;
+    line-height: 1;
+    margin: 20px 0px;
+  }
+
+  h2 {
+    font-size: 14px;
+    line-height: 1;
+    margin: 20px 0px;
+  }
+
+  .profile-photo {
+    display: block;
+    max-width: 100%;
+    border-radius: 6px;
+  }
 }
