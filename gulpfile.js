@@ -1,14 +1,39 @@
-// generated on 2016-08-11 using generator-webapp 2.1.0
 const gulp = require('gulp');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const browserSync = require('browser-sync');
 const del = require('del');
 const wiredep = require('wiredep').stream;
+const merge = require('merge-stream')
+const glob = require('glob');
+const gulpicon = require('gulpicon/tasks/gulpicon');
+
+const gulpiconConfig = require('./gulpiconConfig.js');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
-gulp.task('styles', () => {
+gulp.task('icons', () => {
+  gulpiconConfig.dest = '.tmp/gulpicon';
+  gulpiconConfig.pngfolder = 'png';
+
+  const icons = gulpicon(
+    glob.sync('app/images/**/*.svg'),
+    gulpiconConfig
+  )
+
+  const iconStyles = gulp.src(gulpiconConfig.dest + '/*.css')
+    .pipe(gulp.dest('.tmp/styles'));
+
+  const iconScripts = gulp.src(gulpiconConfig.dest + '/*.js')
+    .pipe(gulp.dest('.tmp/scripts'));
+
+  const iconImages = gulp.src(gulpiconConfig.dest + '/' + gulpiconConfig.pngfolder + '/*')
+    .pipe(gulp.dest('.tmp/images/icons/png'));
+
+  return merge(iconStyles, iconScripts, iconImages)
+});
+
+gulp.task('styles', ['icons'], () => {
   return gulp.src('app/styles/*.scss')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
@@ -23,7 +48,7 @@ gulp.task('styles', () => {
     .pipe(reload({stream: true}));
 });
 
-gulp.task('scripts', () => {
+gulp.task('scripts', ['icons'], () => {
   return gulp.src('app/scripts/**/*.js')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
@@ -66,7 +91,7 @@ gulp.task('html', ['styles', 'scripts'], () => {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('images', () => {
+gulp.task('images', ['icons'], () => {
   return gulp.src('app/images/**/*')
     .pipe($.cache($.imagemin({
       progressive: true,
@@ -96,7 +121,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
+gulp.task('serve', ['styles', 'scripts', 'icons', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -164,7 +189,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'html', 'images', 'icons', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
