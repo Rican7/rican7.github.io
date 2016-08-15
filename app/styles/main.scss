@@ -81,4 +81,31 @@ a {
     font-weight: 400;
     line-height: 1.25;
   }
+
+  .social-links {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 10px 0;
+    list-style: none;
+    font-size: 0;
+    line-height: 0;
+
+    li {
+      display: inline-block;
+      padding: 0;
+      margin: 0 10px;
+
+      a.social-icon {
+        display: block;
+        text-decoration: none;
+
+        img {
+          display: block;
+          width: 24px;
+          max-height: 24px;
+        }
+      }
+    }
+  }
 }
