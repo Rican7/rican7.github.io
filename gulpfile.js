@@ -17,7 +17,7 @@ gulp.task('icons', (cb) => {
     gulpiconConfig.pngfolder = 'png';
 
     const icons = gulpicon(
-      glob.sync('app/images/**/*.svg'),
+      glob.sync('app/images/**/*.svg'), // TODO: Maybe just change to gulp.src()?
       gulpiconConfig
     );
 
@@ -29,13 +29,19 @@ gulp.task('icons', (cb) => {
       cb();
 
       const iconStyles = gulp.src(gulpiconConfig.dest + '/*.css')
-        .pipe(gulp.dest('.tmp/styles'));
+        .pipe(gulp.dest('.tmp/styles'))
+        .pipe(gulp.dest('dist/styles'))
+        .pipe(reload({stream: true}));
 
       const iconScripts = gulp.src(gulpiconConfig.dest + '/*.js')
-        .pipe(gulp.dest('.tmp/scripts'));
+        .pipe(gulp.dest('.tmp/scripts'))
+        .pipe(gulp.dest('dist/scripts'))
+        .pipe(reload({stream: true}));
 
       const iconImages = gulp.src(gulpiconConfig.dest + '/' + gulpiconConfig.pngfolder + '/*')
-        .pipe(gulp.dest('.tmp/images/icons/png'));
+        .pipe(gulp.dest('.tmp/images/icons/png'))
+        .pipe(gulp.dest('dist/images/icons/png'))
+        .pipe(reload({stream: true}));
 
       return merge(iconStyles, iconScripts, iconImages);
     });
@@ -100,7 +106,10 @@ gulp.task('html', ['styles', 'scripts'], () => {
 });
 
 gulp.task('images', ['icons'], () => {
-  return gulp.src('app/images/**/*')
+  return gulp.src([
+      'app/images/**/*',
+      '.tmp/images/**/*'
+    ])
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true,
