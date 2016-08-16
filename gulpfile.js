@@ -12,25 +12,33 @@ const gulpiconConfig = require('./gulpiconConfig.js');
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
-gulp.task('icons', () => {
-  gulpiconConfig.dest = '.tmp/gulpicon';
-  gulpiconConfig.pngfolder = 'png';
+gulp.task('icons', (cb) => {
+    gulpiconConfig.dest = '.tmp/gulpicon';
+    gulpiconConfig.pngfolder = 'png';
 
-  const icons = gulpicon(
-    glob.sync('app/images/**/*.svg'),
-    gulpiconConfig
-  )
+    const icons = gulpicon(
+      glob.sync('app/images/**/*.svg'),
+      gulpiconConfig
+    );
 
-  const iconStyles = gulp.src(gulpiconConfig.dest + '/*.css')
-    .pipe(gulp.dest('.tmp/styles'));
+    return icons((err) => {
+      if (err) {
+        return cb(err);
+      }
 
-  const iconScripts = gulp.src(gulpiconConfig.dest + '/*.js')
-    .pipe(gulp.dest('.tmp/scripts'));
+      cb();
 
-  const iconImages = gulp.src(gulpiconConfig.dest + '/' + gulpiconConfig.pngfolder + '/*')
-    .pipe(gulp.dest('.tmp/images/icons/png'));
+      const iconStyles = gulp.src(gulpiconConfig.dest + '/*.css')
+        .pipe(gulp.dest('.tmp/styles'));
 
-  return merge(iconStyles, iconScripts, iconImages)
+      const iconScripts = gulp.src(gulpiconConfig.dest + '/*.js')
+        .pipe(gulp.dest('.tmp/scripts'));
+
+      const iconImages = gulp.src(gulpiconConfig.dest + '/' + gulpiconConfig.pngfolder + '/*')
+        .pipe(gulp.dest('.tmp/images/icons/png'));
+
+      return merge(iconStyles, iconScripts, iconImages);
+    });
 });
 
 gulp.task('styles', ['icons'], () => {

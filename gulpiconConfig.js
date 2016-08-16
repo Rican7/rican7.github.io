@@ -8,7 +8,7 @@ module.exports = {
   loadersnippet: 'grunticon.loader.js',
 
   // Include loader code for SVG markup embedding
-  enhanceSVG: false,
+  enhanceSVG: true,
 
   // Make markup embedding work across domains (if CSS hosted externally)
   corsEmbed: false,
@@ -23,7 +23,9 @@ module.exports = {
   // like foo.colors-primary-secondary.svg
   colors: {
     primary: '#000',
-    lightgray: '#ddd'
+    dark: '#333',
+    light: '#ddd',
+    inverted: '#fff'
   },
 
   dynamicColorOnly: true,
