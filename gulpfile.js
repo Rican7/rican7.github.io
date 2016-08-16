@@ -17,7 +17,7 @@ gulp.task('icons', (cb) => {
     gulpiconConfig.pngfolder = 'png';
 
     const icons = gulpicon(
-      glob.sync('app/images/**/*.svg'), // TODO: Maybe just change to gulp.src()?
+      glob.sync('app/images/**/*.svg'),
       gulpiconConfig
     );
 
