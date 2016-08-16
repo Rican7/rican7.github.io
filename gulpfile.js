@@ -6,6 +6,7 @@ const wiredep = require('wiredep').stream;
 const merge = require('merge-stream')
 const glob = require('glob');
 const gulpicon = require('gulpicon/tasks/gulpicon');
+const deploy = require('gulp-gh-pages');
 
 const gulpiconConfig = require('./gulpiconConfig.js');
 
@@ -208,6 +209,14 @@ gulp.task('wiredep', () => {
 
 gulp.task('build', ['lint', 'html', 'images', 'icons', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+});
+
+gulp.task('deploy', ['build'], () => {
+  return gulp.src('dist/**/*')
+    .pipe(deploy({
+      remoteUrl: 'https://github.com/Rican7/rican7.github.io.git',
+      branch: 'master'
+    }));
 });
 
 gulp.task('default', ['clean'], () => {
