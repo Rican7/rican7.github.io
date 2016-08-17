@@ -59,10 +59,11 @@ a:hover {
 }
 
 .hero-container {
+  position: relative;
   width: 80%;
   max-width: 400px;
   padding: 10px;
-  margin: 20px 0;
+  margin: 20px auto;
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
@@ -125,9 +126,13 @@ a:hover {
 footer {
   display: block;
   position: absolute;
+  width: auto;
   bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 0;
   margin: 10px 0;
+  text-align: center;
   font-size: 10px;
   font-weight: 100;
   color: $gray;
