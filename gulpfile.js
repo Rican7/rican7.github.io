@@ -7,6 +7,7 @@ const merge = require('merge-stream')
 const glob = require('glob');
 const gulpicon = require('gulpicon/tasks/gulpicon');
 const deploy = require('gulp-gh-pages');
+const uncss = require('gulp-uncss');
 
 const gulpiconConfig = require('./gulpiconConfig.js');
 
@@ -30,6 +31,9 @@ gulp.task('icons', (cb) => {
       cb();
 
       const iconStyles = gulp.src(gulpiconConfig.dest + '/*.css')
+        .pipe(uncss({ // Get rid of any CSS for icons that we're not using, because they're heavy
+          html: ['app/*.html']
+        }))
         .pipe(gulp.dest('.tmp/styles'))
         .pipe(gulp.dest('dist/styles'))
         .pipe(reload({stream: true}));
