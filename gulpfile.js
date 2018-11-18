@@ -52,7 +52,7 @@ gulp.task('icons', (cb) => {
     });
 });
 
-gulp.task('styles', ['icons'], () => {
+gulp.task('styles', () => {
   return gulp.src('app/styles/*.scss')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
@@ -67,7 +67,7 @@ gulp.task('styles', ['icons'], () => {
     .pipe(reload({stream: true}));
 });
 
-gulp.task('scripts', ['icons'], () => {
+gulp.task('scripts', () => {
   return gulp.src('app/scripts/**/*.js')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
@@ -101,16 +101,16 @@ gulp.task('lint:test', () => {
     .pipe(gulp.dest('test/spec/**/*.js'));
 });
 
-gulp.task('html', ['styles', 'scripts'], () => {
+gulp.task('html', gulp.parallel('styles', 'scripts', () => {
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest('dist'));
-});
+}));
 
-gulp.task('images', ['icons'], () => {
+gulp.task('images', () => {
   return gulp.src([
       'app/images/**/*',
       '.tmp/images/**/*'
@@ -144,7 +144,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'scripts', 'icons', 'fonts'], () => {
+gulp.task('serve', gulp.series('styles', 'scripts', 'fonts', 'icons', () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -162,11 +162,11 @@ gulp.task('serve', ['styles', 'scripts', 'icons', 'fonts'], () => {
     '.tmp/fonts/**/*'
   ]).on('change', reload);
 
-  gulp.watch('app/styles/**/*.scss', ['styles']);
-  gulp.watch('app/scripts/**/*.js', ['scripts']);
-  gulp.watch('app/fonts/**/*', ['fonts']);
-  gulp.watch('bower.json', ['wiredep', 'fonts']);
-});
+  gulp.watch('app/styles/**/*.scss', gulp.series('styles'));
+  gulp.watch('app/scripts/**/*.js', gulp.series('scripts'));
+  gulp.watch('app/fonts/**/*', gulp.series('fonts'));
+  gulp.watch('bower.json', gulp.series('wiredep', 'fonts'));
+}));
 
 gulp.task('serve:dist', () => {
   browserSync({
@@ -178,7 +178,7 @@ gulp.task('serve:dist', () => {
   });
 });
 
-gulp.task('serve:test', ['scripts'], () => {
+gulp.task('serve:test', gulp.parallel('scripts', () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -192,10 +192,10 @@ gulp.task('serve:test', ['scripts'], () => {
     }
   });
 
-  gulp.watch('app/scripts/**/*.js', ['scripts']);
+  gulp.watch('app/scripts/**/*.js', gulp.series('scripts'));
   gulp.watch('test/spec/**/*.js').on('change', reload);
-  gulp.watch('test/spec/**/*.js', ['lint:test']);
-});
+  gulp.watch('test/spec/**/*.js', gulp.series('lint:test'));
+}));
 
 // inject bower components
 gulp.task('wiredep', () => {
@@ -212,18 +212,16 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'icons', 'fonts', 'extras'], () => {
+gulp.task('build', gulp.series('lint', 'html', 'images', 'fonts', 'icons', 'extras', () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
-});
+}));
 
-gulp.task('deploy', ['build'], () => {
+gulp.task('deploy', gulp.series('build', () => {
   return gulp.src('dist/**/*')
     .pipe(deploy({
       remoteUrl: 'https://github.com/Rican7/rican7.github.io.git',
       branch: 'master'
     }));
-});
+}));
 
-gulp.task('default', ['clean'], () => {
-  gulp.start('build');
-});
+gulp.task('default', gulp.series('clean', 'build'));
