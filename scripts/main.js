@@ -1,1 +1,1 @@
-"use strict";grunticon(["styles/icons.data.svg.css","styles/icons.data.png.css","styles/icons.fallback.css"],grunticon.svgLoadedCallback);
+grunticon(["styles/icons.data.svg.css","styles/icons.data.png.css","styles/icons.fallback.css"],grunticon.svgLoadedCallback),"serviceWorker"in navigator&&window.addEventListener("load",function(){navigator.serviceWorker.register("service-worker.js").then(function(e){console.log("Service worker registered with scope: ",e.scope)}).catch(function(e){console.error("Failed to register service worker: ",e)})});
