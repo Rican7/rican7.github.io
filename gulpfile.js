@@ -8,11 +8,51 @@ const glob = require('glob');
 const gulpicon = require('gulpicon/tasks/gulpicon');
 const deploy = require('gulp-gh-pages');
 const uncss = require('gulp-uncss');
+const path = require('path');
+const log = require('fancy-log');
+const swPrecache = require('sw-precache');
+
+const packageJson = require('./package.json');
 
 const gulpiconConfig = require('./gulpiconConfig.js');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+
+const DEV_DIR = 'app';
+const DIST_DIR = 'dist';
+
+function writeServiceWorkerFile(rootDir, handleFetch, callback) {
+  var config = {
+    cacheId: packageJson.name,
+    // If handleFetch is false (i.e. because this is called from generate-service-worker-dev), then
+    // the service worker will precache resources but won't actually serve them.
+    // This allows you to test precaching behavior without worry about the cache preventing your
+    // local changes from being picked up during the development cycle.
+    handleFetch: handleFetch,
+    logger: log,
+    runtimeCaching: [],
+    staticFileGlobs: [
+      rootDir + '/images/**.*',
+      rootDir + '/styles/**.css',
+      rootDir + '/scripts/**.js',
+      rootDir + '/**.html'
+    ],
+    stripPrefix: rootDir + '/',
+    // verbose defaults to false, but for the purposes of this demo, log more.
+    verbose: true
+  };
+
+  swPrecache.write(path.join(rootDir, 'service-worker.js'), config, callback);
+}
+
+gulp.task('generate-service-worker-dev', function(cb) {
+    writeServiceWorkerFile(DEV_DIR, false, cb);
+});
+
+gulp.task('generate-service-worker-dist', function(cb) {
+    writeServiceWorkerFile(DIST_DIR, true, cb);
+});
 
 gulp.task('icons', (cb) => {
     gulpiconConfig.dest = '.tmp/gulpicon';
@@ -144,7 +184,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', gulp.series('styles', 'scripts', 'fonts', 'icons', () => {
+gulp.task('serve', gulp.series('styles', 'scripts', 'fonts', 'icons', 'generate-service-worker-dev', () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -212,7 +252,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', gulp.series('lint', 'html', 'images', 'fonts', 'icons', 'extras', () => {
+gulp.task('build', gulp.series('lint', 'html', 'images', 'fonts', 'icons', 'extras', 'generate-service-worker-dist', () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 }));
 
