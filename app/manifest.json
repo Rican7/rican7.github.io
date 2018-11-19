@@ -2,9 +2,10 @@
 	"name": "Trevor Suarez",
 	"short_name": "Trevor S",
 	"description": "Trevor N. Suarez",
-	"start_url": "https://trevorsuarez.com/",
+	"start_url": "/",
+	"scope": "/",
 	"display": "standalone",
-	"theme_color": "#333",
+	"theme_color": "#333333",
 	"background_color": "#fafafa",
 	"icons": [
 		{
