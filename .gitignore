@@ -1,6 +1,7 @@
 node_modules
 dist
 .tmp
+.publish
 bower_components
 test/bower_components
 app/service-worker.js
