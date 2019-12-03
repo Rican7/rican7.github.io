@@ -52,13 +52,15 @@ gulp.task('generate-service-worker-dist', function(cb) {
   writeServiceWorkerFile(DIST_DIR, true, cb);
 });
 
-const appInjectSvgs = injectSvg({
-  base: 'app'
-})
+function appInjectSvgs() {
+  return injectSvg({
+    base: 'app'
+  })
+}
 
 gulp.task('svgs', () => {
   return gulp.src('app/*.html')
-    .pipe(appInjectSvgs)
+    .pipe(appInjectSvgs())
     .pipe(gulp.dest('.tmp'));
 });
 
@@ -116,7 +118,7 @@ gulp.task('html', gulp.series('styles', 'scripts', () => {
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
-    .pipe($.if('*.html', appInjectSvgs))
+    .pipe($.if('*.html', appInjectSvgs()))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest('dist'));
 }));
@@ -168,6 +170,7 @@ gulp.task('serve', gulp.series('styles', 'scripts', 'fonts', 'svgs', 'generate-s
   });
 
   gulp.watch([
+    '.tmp/*.html',
     'app/*.html',
     'app/images/**/*',
     '.tmp/fonts/**/*'
@@ -177,6 +180,7 @@ gulp.task('serve', gulp.series('styles', 'scripts', 'fonts', 'svgs', 'generate-s
   gulp.watch('app/scripts/**/*.js', gulp.series('scripts'));
   gulp.watch('app/fonts/**/*', gulp.series('fonts'));
   gulp.watch('bower.json', gulp.series('wiredep', 'fonts'));
+  gulp.watch('app/*.html', gulp.series('svgs'));
 }));
 
 gulp.task('serve:dist', () => {
