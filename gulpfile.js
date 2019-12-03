@@ -5,7 +5,7 @@ const del = require('del');
 const wiredep = require('wiredep').stream;
 const merge = require('merge-stream')
 const glob = require('glob');
-const gulpicon = require('gulpicon/tasks/gulpicon');
+const injectSvg = require('gulp-inject-svg');
 const deploy = require('gulp-gh-pages');
 const uncss = require('gulp-uncss');
 const path = require('path');
@@ -13,8 +13,6 @@ const log = require('fancy-log');
 const swPrecache = require('sw-precache');
 
 const packageJson = require('./package.json');
-
-const gulpiconConfig = require('./gulpiconConfig.js');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -47,49 +45,21 @@ function writeServiceWorkerFile(rootDir, handleFetch, callback) {
 }
 
 gulp.task('generate-service-worker-dev', function(cb) {
-    writeServiceWorkerFile(DEV_DIR, false, cb);
+  writeServiceWorkerFile(DEV_DIR, false, cb);
 });
 
 gulp.task('generate-service-worker-dist', function(cb) {
-    writeServiceWorkerFile(DIST_DIR, true, cb);
+  writeServiceWorkerFile(DIST_DIR, true, cb);
 });
 
-gulp.task('icons', (cb) => {
-    gulpiconConfig.dest = '.tmp/gulpicon';
-    gulpiconConfig.pngfolder = 'png';
+const appInjectSvgs = injectSvg({
+  base: 'app'
+})
 
-    const icons = gulpicon(
-      glob.sync('app/images/**/*.svg'),
-      gulpiconConfig
-    );
-
-    return icons((err) => {
-      if (err) {
-        return cb(err);
-      }
-
-      cb();
-
-      const iconStyles = gulp.src(gulpiconConfig.dest + '/*.css')
-        .pipe(uncss({ // Get rid of any CSS for icons that we're not using, because they're heavy
-          html: ['app/*.html']
-        }))
-        .pipe(gulp.dest('.tmp/styles'))
-        .pipe(gulp.dest('dist/styles'))
-        .pipe(reload({stream: true}));
-
-      const iconScripts = gulp.src(gulpiconConfig.dest + '/*.js')
-        .pipe(gulp.dest('.tmp/scripts'))
-        .pipe(gulp.dest('dist/scripts'))
-        .pipe(reload({stream: true}));
-
-      const iconImages = gulp.src(gulpiconConfig.dest + '/' + gulpiconConfig.pngfolder + '/*')
-        .pipe(gulp.dest('.tmp/images/icons/png'))
-        .pipe(gulp.dest('dist/images/icons/png'))
-        .pipe(reload({stream: true}));
-
-      return merge(iconStyles, iconScripts, iconImages);
-    });
+gulp.task('svgs', () => {
+  return gulp.src('app/*.html')
+    .pipe(appInjectSvgs)
+    .pipe(gulp.dest('.tmp'));
 });
 
 gulp.task('styles', () => {
@@ -101,7 +71,7 @@ gulp.task('styles', () => {
       precision: 10,
       includePaths: ['.']
     }).on('error', $.sass.logError))
-    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    .pipe($.autoprefixer())
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/styles'))
     .pipe(reload({stream: true}));
@@ -141,11 +111,12 @@ gulp.task('lint:test', () => {
     .pipe(gulp.dest('test/spec/**/*.js'));
 });
 
-gulp.task('html', gulp.parallel('styles', 'scripts', () => {
+gulp.task('html', gulp.series('styles', 'scripts', () => {
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
+    .pipe($.if('*.html', appInjectSvgs))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest('dist'));
 }));
@@ -184,7 +155,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', gulp.series('styles', 'scripts', 'fonts', 'icons', 'generate-service-worker-dev', () => {
+gulp.task('serve', gulp.series('styles', 'scripts', 'fonts', 'svgs', 'generate-service-worker-dev', () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -252,7 +223,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', gulp.series('lint', 'html', 'images', 'fonts', 'icons', 'extras', 'generate-service-worker-dist', () => {
+gulp.task('build', gulp.series('lint', 'html', 'images', 'fonts', 'extras', 'generate-service-worker-dist', () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 }));
 
