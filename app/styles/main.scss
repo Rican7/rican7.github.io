@@ -10,6 +10,7 @@ $gray-light: #ddd;
 $gray: #888;
 $black: #333;
 $blue: #3333dd;
+$blue-dark: #3333c0;
 $blue-light: #3333fa;
 
 /**
@@ -49,9 +50,9 @@ body {
 }
 
 a, a:active, a:focus, a:hover, a:visited {
-  color: $blue;
+  color: $blue-dark;
   text-decoration: none;
-	transition: color 500ms ease;
+  transition: color 500ms ease;
 }
 
 a:hover {
@@ -128,7 +129,12 @@ a:hover {
 
         svg {
           fill: $black;
+          transition: fill 500ms ease;
         }
+      }
+
+      a.social-icon:hover svg {
+        fill: $blue-light;
       }
     }
   }
