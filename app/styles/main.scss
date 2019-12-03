@@ -49,7 +49,7 @@ body {
   color: $black;
 }
 
-a, a:active, a:focus, a:hover, a:visited {
+a:link, a:visited, a:hover, a:active {
   color: $blue-dark;
   text-decoration: none;
   transition: color 500ms ease;
