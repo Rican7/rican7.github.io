@@ -30,6 +30,7 @@ $border-radius: 6px;
 $box-shadow-normal: 0 0 16px 2px $gray-light;
 $box-shadow-mid: 0 0 20px 3px $gray-light;
 $box-shadow-high: 0 0 24px 4px $gray-light;
+$filter-color-subtle-hint: saturate(95%) brightness(95%);
 
 /**
  * Animations
@@ -51,6 +52,22 @@ $animation-timing-function-natural: cubic-bezier(0.4, 0, 1, 1);
 
   to {
     transform: rotateY(-180deg) scale(1);
+  }
+}
+
+@keyframes lift-hint {
+  from {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.01);
+    box-shadow: $box-shadow-high;
+    filter: $filter-color-subtle-hint;
+  }
+
+  to {
+    transform: scale(1);
   }
 }
 
@@ -107,6 +124,11 @@ $animation-timing-function-natural: cubic-bezier(0.4, 0, 1, 1);
  * Styles
  */
 
+html {
+  /* Browser-normalizations */
+  -webkit-tap-highlight-color: transparent;
+}
+
 html, body {
   display: flex;
   width: 100%;
@@ -159,20 +181,27 @@ a:hover {
     background: inherit;
     border-radius: $border-radius;
     box-shadow: $box-shadow-normal;
+    cursor: pointer;
     transform-style: preserve-3d;
     animation-duration: $animation-speed-slow;
     animation-timing-function: $animation-timing-function-natural;
     animation-fill-mode: both;
     animation-direction: alternate;
     transform: translate3d(0, 0, 0);
-    will-change: transform, box-shadow;
+    will-change: transform, box-shadow, filter;
+
+    /* initial animation, to be overridden below */
+    animation-name: lift-hint;
+    animation-delay: 2s;
 
     &.is-flipped {
       animation-name: card-flip-bounce;
+      animation-delay: 0s;
     }
 
     &.is-unflipped {
       animation-name: card-flip-bounce-back;
+      animation-delay: 0s;
     }
 
     .profile-photo {
@@ -181,6 +210,11 @@ a:hover {
       background: inherit;
       border-radius: inherit;
       backface-visibility: hidden;
+      transition: filter $animation-speed-fast $animation-timing-function-natural;
+
+      &:hover {
+        filter: $filter-color-subtle-hint;
+      }
     }
 
     .profile-photo-alt {
