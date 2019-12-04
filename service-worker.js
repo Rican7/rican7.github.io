@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["images/img-20180309_172925-cropped-cleaned-flipped-stylized-square-crop-optimized.jpg","aa3a59d16439c962bb3873a6086bf05d"],["index.html","183218ef2c735898d1ba4352f2efd4b8"],["scripts/main.js","66272d87107cb5963c57e866db31be04"],["styles/main.css","28cd5c44a9c1108dfe998ce0a29a03ee"]];
+var precacheConfig = [["images/img-20180309_172925-cropped-cleaned-flipped-stylized-square-crop-optimized.jpg","aa3a59d16439c962bb3873a6086bf05d"],["images/img-illustrated-avatar-square.png","302cd5094c3c948c985b9b0c8c95bd73"],["index.html","8e3cdafc2770277dcaae6e6616413d63"],["scripts/main.js","17f669739cc0d3d8d7da23318f1dc0fb"],["styles/main.css","587a2127aabad5425b07e5c71d7597d5"]];
 var cacheName = 'sw-precache-v3-personal-site-' + (self.registration ? self.registration.scope : '');
 
 
