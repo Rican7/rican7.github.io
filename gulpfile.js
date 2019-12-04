@@ -8,6 +8,7 @@ const path = require('path');
 const log = require('fancy-log');
 const swPrecache = require('sw-precache');
 const uglify = require('gulp-uglify-es').default;
+const prettier = require('gulp-prettier');
 
 const packageJson = require('./package.json');
 
@@ -80,6 +81,9 @@ gulp.task('scripts', () => {
   return gulp.src('app/scripts/**/*.js')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
+    .pipe(prettier({
+      singleQuote: true
+    }))
     .pipe($.babel({
       presets: ['@babel/env']
     }))
@@ -91,6 +95,17 @@ gulp.task('scripts', () => {
 function lint(files, options) {
   return gulp.src(files)
     .pipe(reload({stream: true, once: true}))
+    .pipe(function () {
+      if (options.fix) {
+        return prettier({
+          singleQuote: true
+        });
+      }
+
+      return prettier.check({
+        singleQuote: true
+      });
+    }())
     .pipe($.eslint(options))
     .pipe($.eslint.format())
     .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
