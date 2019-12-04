@@ -154,7 +154,8 @@ gulp.task('serve', gulp.series('styles', 'scripts', 'svgs', 'generate-service-wo
       baseDir: ['.tmp', 'app'],
       routes: {
       }
-    }
+    },
+    ghostMode: false
   });
 
   gulp.watch([
@@ -174,7 +175,8 @@ gulp.task('serve:dist', () => {
     port: 9000,
     server: {
       baseDir: ['dist']
-    }
+    },
+    ghostMode: false
   });
 });
 
@@ -188,7 +190,8 @@ gulp.task('serve:test', gulp.parallel('scripts', () => {
       routes: {
         '/scripts': '.tmp/scripts',
       }
-    }
+    },
+    ghostMode: false
   });
 
   gulp.watch('app/scripts/**/*.js', gulp.series('scripts'));
