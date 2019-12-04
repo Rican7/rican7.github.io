@@ -164,6 +164,8 @@ a:hover {
     animation-timing-function: $animation-timing-function-natural;
     animation-fill-mode: both;
     animation-direction: alternate;
+    transform: translate3d(0, 0, 0);
+    will-change: transform, box-shadow;
 
     &.is-flipped {
       animation-name: card-flip-bounce;
