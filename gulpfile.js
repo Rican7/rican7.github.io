@@ -7,6 +7,7 @@ const deploy = require('gulp-gh-pages');
 const path = require('path');
 const log = require('fancy-log');
 const swPrecache = require('sw-precache');
+const uglify = require('gulp-uglify-es').default;
 
 const packageJson = require('./package.json');
 
@@ -79,7 +80,9 @@ gulp.task('scripts', () => {
   return gulp.src('app/scripts/**/*.js')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
-    .pipe($.babel())
+    .pipe($.babel({
+      presets: ['@babel/env']
+    }))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('.tmp/scripts'))
     .pipe(reload({stream: true}));
@@ -112,7 +115,7 @@ gulp.task('lint:test', () => {
 gulp.task('html', gulp.series('styles', 'scripts', () => {
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
-    .pipe($.if('*.js', $.uglify()))
+    .pipe($.if('*.js', uglify()))
     .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
     .pipe($.if('*.html', appInjectSvgs()))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
