@@ -23,6 +23,85 @@ $font-title: 'Roboto', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helv
 
 $border-radius: 6px;
 
+/**
+ * Shared Composites
+ */
+
+$box-shadow-normal: 0 0 16px 2px $gray-light;
+$box-shadow-mid: 0 0 20px 3px $gray-light;
+$box-shadow-high: 0 0 24px 4px $gray-light;
+
+/**
+ * Animations
+ */
+
+$animation-speed-normal: 500ms;
+$animation-speed-fast: 250ms;
+$animation-speed-slow: 750ms;
+$animation-timing-function-natural: cubic-bezier(0.4, 0, 1, 1);
+
+@keyframes card-flip {
+  from {
+    transform: rotateY(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotateY(-90deg) scale(1.1);
+  }
+
+  to {
+    transform: rotateY(-180deg) scale(1);
+  }
+}
+
+@keyframes card-flip-bounce {
+  from {
+    transform: rotateY(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotateY(-90deg) scale(1.1);
+    box-shadow: $box-shadow-high;
+  }
+
+  75% {
+    transform: rotateY(-160deg) scale(1);
+  }
+
+  90% {
+    transform: rotateY(-180deg) scale(1.01);
+    box-shadow: $box-shadow-mid;
+  }
+
+  to {
+    transform: rotateY(-180deg) scale(1);
+  }
+}
+
+@keyframes card-flip-bounce-back {
+  from {
+    transform: rotateY(-180deg) scale(1);
+  }
+
+  50% {
+    transform: rotateY(-90deg) scale(1.1);
+    box-shadow: $box-shadow-high;
+  }
+
+  75% {
+    transform: rotateY(-20deg) scale(1);
+  }
+
+  90% {
+    transform: rotateY(0deg) scale(1.01);
+    box-shadow: $box-shadow-mid;
+  }
+
+  to {
+    transform: rotateY(0deg) scale(1);
+  }
+}
+
 
 /**
  * Styles
@@ -36,6 +115,7 @@ html, body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  perspective: 400vw;
 }
 
 body {
@@ -49,7 +129,7 @@ body {
 a:link, a:visited, a:hover, a:active {
   color: $blue-dark;
   text-decoration: none;
-  transition: color 500ms ease;
+  transition: color $animation-speed-normal $animation-timing-function-natural;
 }
 
 a:hover {
@@ -68,15 +148,45 @@ a:hover {
   line-height: 30px;
   background: $white;
   border-radius: $border-radius;
-  box-shadow: 0 0 16px 2px $gray-light;
+  box-shadow: $box-shadow-normal;
   z-index: 100;
   text-align: center;
 
-  .profile-photo {
+  .hero-card-container {
+    position: relative;
     display: block;
     max-width: 100%;
-    border-radius: 6px;
-    box-shadow: 0 0 16px 2px $gray-light;
+    background: inherit;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-normal;
+    transform-style: preserve-3d;
+    animation-duration: $animation-speed-slow;
+    animation-timing-function: $animation-timing-function-natural;
+    animation-fill-mode: both;
+    animation-direction: alternate;
+
+    &.is-flipped {
+      animation-name: card-flip-bounce;
+    }
+
+    &.is-unflipped {
+      animation-name: card-flip-bounce-back;
+    }
+
+    .profile-photo {
+      display: block;
+      max-width: 100%;
+      background: inherit;
+      border-radius: inherit;
+      backface-visibility: hidden;
+    }
+
+    .profile-photo-alt {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotateY(180deg);
+    }
   }
 
   header {
@@ -136,7 +246,7 @@ a:hover {
 
         svg {
           fill: $black;
-          transition: fill 500ms ease;
+          transition: fill $animation-speed-normal $animation-timing-function-natural;
         }
       }
 
