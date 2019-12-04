@@ -30,12 +30,8 @@
     "gulp-size": "^3.0.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
-    "gulp-uncss": "^1.0.6",
     "gulp-useref": "^3.1.6",
-    "main-bower-files": "^2.5.0",
-    "merge-stream": "^1.0.0",
-    "sw-precache": "^5.2.1",
-    "wiredep": "^4.0.0"
+    "sw-precache": "^5.2.1"
   },
   "eslintConfig": {
     "env": {
