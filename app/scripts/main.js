@@ -1,4 +1,6 @@
 (() => {
+  'use strict';
+
   console.log('Trevor says hi 👋');
 
   const heroCardContainerElement = document.querySelector(
