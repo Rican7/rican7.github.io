@@ -5,7 +5,9 @@
     '.hero-card-container'
   );
 
-  heroCardContainerElement.querySelectorAll('img').forEach(element => {
+  const heroImages = heroCardContainerElement.querySelectorAll('img');
+
+  Array.prototype.forEach.call(heroImages, element => {
     // Eagerly decode the images in the card container, to increase the
     // performance of the first animation
     if (typeof element.decode === 'function') {
@@ -21,6 +23,10 @@
   heroCardContainerElement.addEventListener('click', () => {
     let flipping = heroCardContainerElement.classList.toggle('is-flipped');
 
-    heroCardContainerElement.classList.toggle('is-unflipped', !flipping);
+    if (flipping) {
+      heroCardContainerElement.classList.remove('is-unflipped');
+    } else {
+      heroCardContainerElement.classList.add('is-unflipped');
+    }
   });
 })();
