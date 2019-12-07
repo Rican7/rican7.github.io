@@ -148,7 +148,7 @@ body {
   color: $black;
 }
 
-a:link, a:visited, a:hover, a:active {
+a:link {
   color: $blue-dark;
   text-decoration: none;
   transition: color $animation-speed-normal $animation-timing-function-natural;
@@ -156,6 +156,10 @@ a:link, a:visited, a:hover, a:active {
 
 a:hover {
   color: $blue-light;
+}
+
+a:visited, a:active {
+  color: $blue-dark;
 }
 
 .hero-container {
