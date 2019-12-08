@@ -182,7 +182,6 @@ a:visited, a:active {
     position: relative;
     display: block;
     max-width: 100%;
-    background: inherit;
     border-radius: $border-radius;
     box-shadow: $box-shadow-normal;
     cursor: pointer;
@@ -211,7 +210,6 @@ a:visited, a:active {
     .profile-photo {
       display: block;
       max-width: 100%;
-      background: inherit;
       border-radius: inherit;
       backface-visibility: hidden;
       transform-style: preserve-3d;
