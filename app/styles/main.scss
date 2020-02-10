@@ -141,6 +141,7 @@ html, body {
 }
 
 body {
+  overflow-y: scroll;
   align-items: center;
   justify-content: center;
   background: $white;
@@ -162,13 +163,30 @@ a:visited, a:active {
   color: $blue-dark;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  border-radius: 0;
+  background-color: $white;
+
+  &:hover {
+    background-color: $gray-light;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 100px;
+  background-color: $gray;
+  background-clip: padding-box;
+}
+
 .hero-container {
   position: relative;
   width: 80%;
   max-width: 400px;
   padding: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 40px 0px;
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
