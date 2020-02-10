@@ -6,8 +6,9 @@
   const heroCardContainerElement = document.querySelector(
     '.hero-card-container'
   );
-
   const heroImages = heroCardContainerElement.querySelectorAll('img');
+  const contentExpandButton = document.querySelector('#content-expand');
+  const secondaryContentElement = document.querySelector('.secondary-content');
 
   Array.prototype.forEach.call(heroImages, element => {
     // Eagerly decode the images in the card container, to increase the
@@ -30,5 +31,11 @@
     } else {
       heroCardContainerElement.classList.add('is-unflipped');
     }
+  });
+
+  // Add a click-listener for handling the content expansion
+  contentExpandButton.addEventListener('click', () => {
+    contentExpandButton.classList.toggle('opened');
+    secondaryContentElement.classList.toggle('closed');
   });
 })();
