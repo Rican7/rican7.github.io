@@ -4,7 +4,9 @@
 
 $white: #fafafa;
 $gray-light: #ddd;
+$gray-midlight: #bbb;
 $gray: #888;
+$gray-middark: #666;
 $black: #333;
 $blue: #3333dd;
 $blue-dark: #3333c0;
@@ -177,8 +179,16 @@ a:visited, a:active {
 ::-webkit-scrollbar-thumb {
   border: 2px solid transparent;
   border-radius: 100px;
-  background-color: $gray;
+  background-color: $gray-midlight;
   background-clip: padding-box;
+
+  &:hover {
+    background-color: $gray;
+  }
+
+  &:active {
+    background-color: $gray-middark;
+  }
 }
 
 .hero-container {
