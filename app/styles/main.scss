@@ -328,6 +328,7 @@ a:visited, a:active {
     display: block;
     width: 0px;
     height: 0px;
+    overflow: hidden;
     margin: 0px auto;
     margin-top: -5px;
     padding: 6px;
@@ -336,6 +337,7 @@ a:visited, a:active {
     border-color: $gray-light;
     background: none;
     outline: none;
+    white-space: nowrap;
     transform: rotate(45deg) skew(-25deg, -25deg);
     transition: transform $animation-speed-fast $animation-timing-function-natural,
       margin-top $animation-speed-fast $animation-timing-function-natural,
@@ -356,6 +358,14 @@ a:visited, a:active {
     &.opened {
       transform: rotate(225deg) skew(-25deg, -25deg);
       margin-top: 0px;
+    }
+
+    .button-label {
+      display: block;
+      width: 0px;
+      height: 0px;
+      overflow: hidden;
+      font-size: 0px;
     }
   }
 
