@@ -155,10 +155,12 @@ gulp.task('images', () => {
 gulp.task('extras', () => {
   return gulp.src([
     'app/*',
-    '!app/*.html'
+    '!app/*.html',
+    'app/docs/*',
   ], {
     dot: true,
-    nodir: true
+    nodir: true,
+    base: './app/'
   }).pipe(gulp.dest('dist'));
 });
 
