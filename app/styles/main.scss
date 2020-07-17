@@ -219,7 +219,7 @@ a:visited, a:active {
     animation-fill-mode: both;
     animation-direction: alternate;
     transform: translate3d(0, 0, 0);
-    will-change: transform, box-shadow, filter;
+    will-change: transform, box-shadow;
 
     /* initial animation, to be overridden below */
     animation-name: lift-hint;
