@@ -10,6 +10,16 @@
   const contentExpandButton = document.querySelector('#content-expand');
   const secondaryContentElement = document.querySelector('.secondary-content');
 
+  const classAnimating = 'animating';
+
+  // Generic event listener functions for toggling animation states
+  const fnAnimatingOn = event => {
+    event.currentTarget.classList.add(classAnimating);
+  };
+  const fnAnimatingOff = event => {
+    event.currentTarget.classList.remove(classAnimating);
+  };
+
   Array.prototype.forEach.call(heroImages, element => {
     // Eagerly decode the images in the card container, to increase the
     // performance of the first animation
@@ -22,11 +32,21 @@
     }
   });
 
+  // Add animation listeners for toggling animation states
+  heroCardContainerElement.addEventListener('animationstart', fnAnimatingOn);
+  heroCardContainerElement.addEventListener('animationend', fnAnimatingOff);
+
   // Add a click-listener for handling the card flipping
   heroCardContainerElement.addEventListener('click', () => {
-    let flipping = heroCardContainerElement.classList.toggle('is-flipped');
+    // If the element is currently animating...
+    if (heroCardContainerElement.classList.contains(classAnimating)) {
+      // Do nothing and return early, to not interrupt the animation
+      return;
+    }
 
-    if (flipping) {
+    let isFlipped = heroCardContainerElement.classList.toggle('is-flipped');
+
+    if (isFlipped) {
       heroCardContainerElement.classList.remove('is-unflipped');
     } else {
       heroCardContainerElement.classList.add('is-unflipped');
