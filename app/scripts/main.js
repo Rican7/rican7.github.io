@@ -9,18 +9,19 @@
   const heroImages = heroCardContainerElement.querySelectorAll('img');
   const contentExpandButton = document.querySelector('#content-expand');
   const secondaryContentElement = document.querySelector('.secondary-content');
+  const copyrightYearElement = document.querySelector('#copyright-year');
 
   const classAnimating = 'animating';
 
   // Generic event listener functions for toggling animation states
-  const fnAnimatingOn = event => {
+  const fnAnimatingOn = (event) => {
     event.currentTarget.classList.add(classAnimating);
   };
-  const fnAnimatingOff = event => {
+  const fnAnimatingOff = (event) => {
     event.currentTarget.classList.remove(classAnimating);
   };
 
-  Array.prototype.forEach.call(heroImages, element => {
+  Array.prototype.forEach.call(heroImages, (element) => {
     // Eagerly decode the images in the card container, to increase the
     // performance of the first animation
     if (typeof element.decode === 'function') {
@@ -58,4 +59,10 @@
     contentExpandButton.classList.toggle('opened');
     secondaryContentElement.classList.toggle('closed');
   });
+
+  // Replace the copyright year with the current year
+  const currentYear = new Date().getFullYear();
+  if (Number(copyrightYearElement.innerText) < currentYear) {
+    copyrightYearElement.innerText = currentYear.toString();
+  }
 })();
