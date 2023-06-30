@@ -30,6 +30,7 @@ function writeServiceWorkerFile(rootDir, handleFetch, callback) {
     logger: log,
     runtimeCaching: [],
     staticFileGlobs: [
+      rootDir + '/docs/**.*',
       rootDir + '/images/**.*',
       rootDir + '/styles/**.css',
       rootDir + '/scripts/**.js',
