@@ -5,9 +5,9 @@
     "node": ">=4"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.9",
-    "@babel/preset-env": "^7.16.11",
-    "browser-sync": "^2.27.9",
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "browser-sync": "^2.29.3",
     "del": "^6.0.0",
     "fancy-log": "^2.0.0",
     "gulp": "^4.0.2",
@@ -21,7 +21,7 @@
     "gulp-if": "^3.0.0",
     "gulp-imagemin": "^8.0.0",
     "gulp-inject-svg": "^0.1.18",
-    "gulp-load-plugins": "^2.0.7",
+    "gulp-load-plugins": "^2.0.8",
     "gulp-plumber": "^1.2.1",
     "gulp-prettier": "^4.0.0",
     "gulp-sass": "^5.1.0",
@@ -29,7 +29,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify-es": "^3.0.0",
     "gulp-useref": "^5.0.0",
-    "sass": "^1.50.0",
+    "sass": "^1.63.6",
     "sw-precache": "^5.2.1"
   },
   "eslintConfig": {
