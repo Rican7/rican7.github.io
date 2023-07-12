@@ -2,7 +2,6 @@
   /**
    * Color scheme
    */
-
   --white: #fafafa;
   --gray-light: #ddd;
   --gray-midlight: #bbb;
@@ -13,32 +12,45 @@
   --blue-dark: #3333c0;
   --blue-light: #3333fa;
 
+  --background-color: var(--white);
+  --shadow-color: var(--gray-light);
+  --text-main-color: var(--black);
+  --text-subtle-color: var(--gray-middark);
+  --text-very-subtle-color: var(--gray);
+  --link-main-color: var(--blue-dark);
+  --link-main-hover-color: var(--blue-light);
+  --button-icon-color: var(--black);
+  --button-icon-hover-color: var(--blue-light);
+  --button-subtle-color: var(--gray-light);
+  --button-subtle-hover-color: var(--gray);
+  --scrollbar-track-color: var(--white);
+  --scrollbar-track-hover-color: var(--gray-light);
+  --scrollbar-thumb-color: var(--gray-midlight);
+  --scrollbar-thumb-hover-color: var(--gray);
+  --scrollbar-thumb-active-color: var(--gray-middark);
+
   /**
    * Fonts
    */
-
   --font-normal: 'Roboto Condensed', -apple-system-condensed, SanFranciscoCondensed-Regular, SanFranciscoCondensed, 'San Francisco Condensed', AvenirNextCondensed-Regular, AvenirNextCondensed, 'Avenir Next Condensed', HelveticaNueueCondensed-Regular, HelveticaNueueCondensed, 'Helvetica Neue Condensed', HelveticaCondensed-Regular, HelveticaCondensed, 'Helvetica Condensed', sans-serif-condensed, -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', 'Segoe UI', Helvetica, 'Arial Condensed', Arial, sans-serif;
   --font-title: Roboto, -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
 
   /**
    * Sizes
    */
-
   --border-radius: 6px;
 
   /**
    * Shared Composites
    */
-
-  --box-shadow-normal: 0 0 16px 2px var(--gray-light);
-  --box-shadow-mid: 0 0 20px 3px var(--gray-light);
-  --box-shadow-high: 0 0 24px 4px var(--gray-light);
+  --box-shadow-normal: 0 0 16px 2px var(--shadow-color);
+  --box-shadow-mid: 0 0 20px 3px var(--shadow-color);
+  --box-shadow-high: 0 0 24px 4px var(--shadow-color);
   --filter-color-subtle-hint: saturate(95%) brightness(95%);
 
   /**
    * Animations
    */
-
   --animation-speed-normal: 500ms;
   --animation-speed-fast: 250ms;
   --animation-speed-slow: 750ms;
@@ -148,48 +160,48 @@ body {
   overflow-y: scroll;
   align-items: center;
   justify-content: center;
-  background: var(--white);
+  background: var(--background-color);
   font-family: var(--font-normal);
-  color: var(--black);
+  color: var(--text-main-color);
 }
 
 a:link {
-  color: var(--blue-dark);
+  color: var(--link-main-color);
   text-decoration: none;
   transition: color var(--animation-speed-normal) var(--animation-timing-function-natural);
 }
 
 a:hover {
-  color: var(--blue-light);
+  color: var(--link-main-hover-color);
 }
 
 a:visited, a:active {
-  color: var(--blue-dark);
+  color: var(--link-main-color);
 }
 
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
   border-radius: 0;
-  background-color: var(--white);
+  background-color: var(--scrollbar-track-color);
 
   &:hover {
-    background-color: var(--gray-light);
+    background-color: var(--scrollbar-track-hover-color);
   }
 }
 
 ::-webkit-scrollbar-thumb {
   border: 2px solid transparent;
   border-radius: 100px;
-  background-color: var(--gray-midlight);
+  background-color: var(--scrollbar-thumb-color);
   background-clip: padding-box;
 
   &:hover {
-    background-color: var(--gray);
+    background-color: var(--scrollbar-thumb-hover-color);
   }
 
   &:active {
-    background-color: var(--gray-middark);
+    background-color: var(--scrollbar-thumb-active-color);
   }
 }
 
@@ -202,7 +214,7 @@ a:visited, a:active {
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
-  background: var(--white);
+  background: var(--background-color);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow-normal);
   z-index: 100;
@@ -242,7 +254,7 @@ a:visited, a:active {
       max-width: 100%;
       border-radius: inherit;
       backface-visibility: hidden;
-      background: var(--white);
+      background: var(--background-color);
       transform-style: preserve-3d;
       transition: filter var(--animation-speed-fast) var(--animation-timing-function-natural);
 
@@ -281,7 +293,7 @@ a:visited, a:active {
       margin-top: 5px;
       font-size: 12px;
       font-weight: 200;
-      color: var(--gray-middark);
+      color: var(--text-subtle-color);
     }
 
     h3 {
@@ -333,13 +345,13 @@ a:visited, a:active {
         }
 
         svg {
-          fill: var(--black);
+          fill: var(--button-icon-color);
           transition: fill var(--animation-speed-normal) var(--animation-timing-function-natural);
         }
       }
 
       a.social-icon:hover svg {
-        fill: var(--blue-light);
+        fill: var(--button-icon-hover-color);
       }
     }
   }
@@ -354,7 +366,7 @@ a:visited, a:active {
     padding: 6px;
     border-width: 0px 4px 4px 0px;
     border-style: solid;
-    border-color: var(--gray-light);
+    border-color: var(--button-subtle-color);
     background: none;
     outline: none;
     white-space: nowrap;
@@ -371,7 +383,7 @@ a:visited, a:active {
     }
 
     &:hover {
-      border-color: var(--gray);
+      border-color: var(--button-subtle-hover-color);
       cursor: pointer;
     }
 
@@ -442,5 +454,5 @@ footer {
   text-align: center;
   font-size: 10px;
   font-weight: 100;
-  color: var(--gray);
+  color: var(--text-very-subtle-color);
 }
