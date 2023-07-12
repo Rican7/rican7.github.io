@@ -1,47 +1,49 @@
-/**
- * Color scheme
- */
+:root {
+  /**
+   * Color scheme
+   */
 
-$white: #fafafa;
-$gray-light: #ddd;
-$gray-midlight: #bbb;
-$gray: #888;
-$gray-middark: #666;
-$black: #333;
-$blue: #3333dd;
-$blue-dark: #3333c0;
-$blue-light: #3333fa;
+  --white: #fafafa;
+  --gray-light: #ddd;
+  --gray-midlight: #bbb;
+  --gray: #888;
+  --gray-middark: #666;
+  --black: #333;
+  --blue: #3333dd;
+  --blue-dark: #3333c0;
+  --blue-light: #3333fa;
 
-/**
- * Fonts
- */
+  /**
+   * Fonts
+   */
 
-$font-normal: 'Roboto Condensed', -apple-system-condensed, SanFranciscoCondensed-Regular, SanFranciscoCondensed, 'San Francisco Condensed', AvenirNextCondensed-Regular, AvenirNextCondensed, 'Avenir Next Condensed', HelveticaNueueCondensed-Regular, HelveticaNueueCondensed, 'Helvetica Neue Condensed', HelveticaCondensed-Regular, HelveticaCondensed, 'Helvetica Condensed', sans-serif-condensed, -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', 'Segoe UI', Helvetica, 'Arial Condensed', Arial, sans-serif;
-$font-title: Roboto, -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-normal: 'Roboto Condensed', -apple-system-condensed, SanFranciscoCondensed-Regular, SanFranciscoCondensed, 'San Francisco Condensed', AvenirNextCondensed-Regular, AvenirNextCondensed, 'Avenir Next Condensed', HelveticaNueueCondensed-Regular, HelveticaNueueCondensed, 'Helvetica Neue Condensed', HelveticaCondensed-Regular, HelveticaCondensed, 'Helvetica Condensed', sans-serif-condensed, -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', 'Segoe UI', Helvetica, 'Arial Condensed', Arial, sans-serif;
+  --font-title: Roboto, -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
 
-/**
- * Sizes
- */
+  /**
+   * Sizes
+   */
 
-$border-radius: 6px;
+  --border-radius: 6px;
 
-/**
- * Shared Composites
- */
+  /**
+   * Shared Composites
+   */
 
-$box-shadow-normal: 0 0 16px 2px $gray-light;
-$box-shadow-mid: 0 0 20px 3px $gray-light;
-$box-shadow-high: 0 0 24px 4px $gray-light;
-$filter-color-subtle-hint: saturate(95%) brightness(95%);
+  --box-shadow-normal: 0 0 16px 2px var(--gray-light);
+  --box-shadow-mid: 0 0 20px 3px var(--gray-light);
+  --box-shadow-high: 0 0 24px 4px var(--gray-light);
+  --filter-color-subtle-hint: saturate(95%) brightness(95%);
 
-/**
- * Animations
- */
+  /**
+   * Animations
+   */
 
-$animation-speed-normal: 500ms;
-$animation-speed-fast: 250ms;
-$animation-speed-slow: 750ms;
-$animation-timing-function-natural: cubic-bezier(0.4, 0, 1, 1);
+  --animation-speed-normal: 500ms;
+  --animation-speed-fast: 250ms;
+  --animation-speed-slow: 750ms;
+  --animation-timing-function-natural: cubic-bezier(0.4, 0, 1, 1);
+}
 
 @keyframes card-flip {
   from {
@@ -64,8 +66,8 @@ $animation-timing-function-natural: cubic-bezier(0.4, 0, 1, 1);
 
   50% {
     transform: scale(1.01);
-    box-shadow: $box-shadow-high;
-    filter: $filter-color-subtle-hint;
+    box-shadow: var(--box-shadow-high);
+    filter: var(--filter-color-subtle-hint);
   }
 
   to {
@@ -80,7 +82,7 @@ $animation-timing-function-natural: cubic-bezier(0.4, 0, 1, 1);
 
   50% {
     transform: rotateY(-90deg) scale(1.1);
-    box-shadow: $box-shadow-high;
+    box-shadow: var(--box-shadow-high);
   }
 
   75% {
@@ -89,7 +91,7 @@ $animation-timing-function-natural: cubic-bezier(0.4, 0, 1, 1);
 
   90% {
     transform: rotateY(-180deg) scale(1.01);
-    box-shadow: $box-shadow-mid;
+    box-shadow: var(--box-shadow-mid);
   }
 
   to {
@@ -104,7 +106,7 @@ $animation-timing-function-natural: cubic-bezier(0.4, 0, 1, 1);
 
   50% {
     transform: rotateY(-90deg) scale(1.1);
-    box-shadow: $box-shadow-high;
+    box-shadow: var(--box-shadow-high);
   }
 
   75% {
@@ -113,7 +115,7 @@ $animation-timing-function-natural: cubic-bezier(0.4, 0, 1, 1);
 
   90% {
     transform: rotateY(0deg) scale(1.01);
-    box-shadow: $box-shadow-mid;
+    box-shadow: var(--box-shadow-mid);
   }
 
   to {
@@ -146,48 +148,48 @@ body {
   overflow-y: scroll;
   align-items: center;
   justify-content: center;
-  background: $white;
-  font-family: $font-normal;
-  color: $black;
+  background: var(--white);
+  font-family: var(--font-normal);
+  color: var(--black);
 }
 
 a:link {
-  color: $blue-dark;
+  color: var(--blue-dark);
   text-decoration: none;
-  transition: color $animation-speed-normal $animation-timing-function-natural;
+  transition: color var(--animation-speed-normal) var(--animation-timing-function-natural);
 }
 
 a:hover {
-  color: $blue-light;
+  color: var(--blue-light);
 }
 
 a:visited, a:active {
-  color: $blue-dark;
+  color: var(--blue-dark);
 }
 
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
   border-radius: 0;
-  background-color: $white;
+  background-color: var(--white);
 
   &:hover {
-    background-color: $gray-light;
+    background-color: var(--gray-light);
   }
 }
 
 ::-webkit-scrollbar-thumb {
   border: 2px solid transparent;
   border-radius: 100px;
-  background-color: $gray-midlight;
+  background-color: var(--gray-midlight);
   background-clip: padding-box;
 
   &:hover {
-    background-color: $gray;
+    background-color: var(--gray);
   }
 
   &:active {
-    background-color: $gray-middark;
+    background-color: var(--gray-middark);
   }
 }
 
@@ -200,9 +202,9 @@ a:visited, a:active {
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
-  background: $white;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow-normal;
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-normal);
   z-index: 100;
   text-align: center;
 
@@ -210,12 +212,12 @@ a:visited, a:active {
     position: relative;
     display: block;
     max-width: 100%;
-    border-radius: $border-radius;
-    box-shadow: $box-shadow-normal;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-normal);
     cursor: pointer;
     transform-style: preserve-3d;
-    animation-duration: $animation-speed-slow;
-    animation-timing-function: $animation-timing-function-natural;
+    animation-duration: var(--animation-speed-slow);
+    animation-timing-function: var(--animation-timing-function-natural);
     animation-fill-mode: both;
     animation-direction: alternate;
     transform: translate3d(0, 0, 0);
@@ -240,12 +242,12 @@ a:visited, a:active {
       max-width: 100%;
       border-radius: inherit;
       backface-visibility: hidden;
-      background: $white;
+      background: var(--white);
       transform-style: preserve-3d;
-      transition: filter $animation-speed-fast $animation-timing-function-natural;
+      transition: filter var(--animation-speed-fast) var(--animation-timing-function-natural);
 
       &:hover {
-        filter: $filter-color-subtle-hint;
+        filter: var(--filter-color-subtle-hint);
       }
     }
 
@@ -264,7 +266,7 @@ a:visited, a:active {
       margin: 0;
       margin-top: 20px;
       margin-bottom: 15px;
-      font-family: $font-title;
+      font-family: var(--font-title);
       line-height: 1;
     }
 
@@ -279,7 +281,7 @@ a:visited, a:active {
       margin-top: 5px;
       font-size: 12px;
       font-weight: 200;
-      color: $gray-middark;
+      color: var(--gray-middark);
     }
 
     h3 {
@@ -331,13 +333,13 @@ a:visited, a:active {
         }
 
         svg {
-          fill: $black;
-          transition: fill $animation-speed-normal $animation-timing-function-natural;
+          fill: var(--black);
+          transition: fill var(--animation-speed-normal) var(--animation-timing-function-natural);
         }
       }
 
       a.social-icon:hover svg {
-        fill: $blue-light;
+        fill: var(--blue-light);
       }
     }
   }
@@ -352,14 +354,14 @@ a:visited, a:active {
     padding: 6px;
     border-width: 0px 4px 4px 0px;
     border-style: solid;
-    border-color: $gray-light;
+    border-color: var(--gray-light);
     background: none;
     outline: none;
     white-space: nowrap;
     transform: rotate(45deg) skew(-25deg, -25deg);
-    transition: transform $animation-speed-fast $animation-timing-function-natural,
-      margin-top $animation-speed-fast $animation-timing-function-natural,
-      border-color $animation-speed-normal $animation-timing-function-natural;
+    transition: transform var(--animation-speed-fast) var(--animation-timing-function-natural),
+      margin-top var(--animation-speed-fast) var(--animation-timing-function-natural),
+      border-color var(--animation-speed-normal) var(--animation-timing-function-natural);
 
     @media (min-width: 375px) {
       padding: 8px;
@@ -369,7 +371,7 @@ a:visited, a:active {
     }
 
     &:hover {
-      border-color: $gray;
+      border-color: var(--gray);
       cursor: pointer;
     }
 
@@ -391,7 +393,7 @@ a:visited, a:active {
     max-height: 600px;
     overflow: hidden;
     margin: 0px 10px;
-    transition: max-height $animation-speed-fast $animation-timing-function-natural;
+    transition: max-height var(--animation-speed-fast) var(--animation-timing-function-natural);
     text-align: left;
     font-size: 14px;
     font-weight: 300;
@@ -440,5 +442,5 @@ footer {
   text-align: center;
   font-size: 10px;
   font-weight: 100;
-  color: $gray;
+  color: var(--gray);
 }
