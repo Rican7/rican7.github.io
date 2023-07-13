@@ -46,6 +46,11 @@
   --border-radius: 6px;
 
   /**
+   * Images
+   */
+  --transparent-noise: url(/images/noise.svg);
+
+  /**
    * Shared Composites
    */
   --box-shadow-normal: 0 0 16px 2px var(--shadow-color);
@@ -192,6 +197,20 @@ body {
   background: var(--background-color);
   font-family: var(--font-normal);
   color: var(--text-main-color);
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: var(--transparent-noise);
+  background-position: center;
+  background-repeat: repeat;
+  opacity: 0.1;
 }
 
 a:link {
