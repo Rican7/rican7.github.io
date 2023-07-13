@@ -48,11 +48,12 @@
   /**
    * Images
    */
-  --transparent-noise: url(/images/noise.svg);
+  --image-transparent-noise: url(/images/noise.png);
 
   /**
    * Shared Composites
    */
+  --background-noise: repeat center/480px var(--image-transparent-noise);
   --box-shadow-normal: 0 0 16px 2px var(--shadow-color);
   --box-shadow-mid: 0 0 20px 3px var(--shadow-color);
   --box-shadow-high: 0 0 24px 4px var(--shadow-color);
@@ -207,10 +208,8 @@ body::before {
   width: 100%;
   height: 100%;
   z-index: 10;
-  background: var(--transparent-noise);
-  background-position: center;
-  background-repeat: repeat;
-  opacity: 0.1;
+  background: var(--background-noise);
+  opacity: 0.25;
 }
 
 a:link {
