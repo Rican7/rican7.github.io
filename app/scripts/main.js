@@ -45,7 +45,7 @@
       return;
     }
 
-    let isFlipped = heroCardContainerElement.classList.toggle('is-flipped');
+    const isFlipped = heroCardContainerElement.classList.toggle('is-flipped');
 
     if (isFlipped) {
       heroCardContainerElement.classList.remove('is-unflipped');

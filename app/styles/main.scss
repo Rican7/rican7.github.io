@@ -267,94 +267,97 @@ a:visited, a:active {
   z-index: 100;
   text-align: center;
 
-  .hero-card-container {
-    position: relative;
-    display: block;
-    max-width: 100%;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow-normal);
-    cursor: pointer;
-    transform-style: preserve-3d;
-    animation-duration: var(--animation-speed-slow);
-    animation-timing-function: var(--animation-timing-function-natural);
-    animation-fill-mode: both;
-    animation-direction: alternate;
-    transform: translate3d(0, 0, 0);
-    will-change: transform, box-shadow; /* this should include `filter`, but its been broken by Chrome 84... */
+  header {
 
-    /* initial animation, to be overridden below */
-    animation-name: lift-hint;
-    animation-delay: 2s;
-
-    &.is-flipped {
-      animation-name: card-flip-bounce;
-      animation-delay: 0s;
-    }
-
-    &.is-unflipped {
-      animation-name: card-flip-bounce-back;
-      animation-delay: 0s;
-    }
-
-    .profile-photo {
+    .hero-card-container {
+      position: relative;
       display: block;
       max-width: 100%;
-      border-radius: inherit;
-      backface-visibility: hidden;
-      background: var(--background-color);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow-normal);
+      cursor: pointer;
       transform-style: preserve-3d;
-      transition: filter var(--animation-speed-fast) var(--animation-timing-function-natural);
+      animation-duration: var(--animation-speed-slow);
+      animation-timing-function: var(--animation-timing-function-natural);
+      animation-fill-mode: both;
+      animation-direction: alternate;
+      transform: translate3d(0, 0, 0);
+      will-change: transform, box-shadow; /* this should include `filter`, but its been broken by Chrome 84... */
 
-      &:hover {
-        filter: var(--filter-color-subtle-hint);
+      /* initial animation, to be overridden below */
+      animation-name: lift-hint;
+      animation-delay: 2s;
+
+      &.is-flipped {
+        animation-name: card-flip-bounce;
+        animation-delay: 0s;
+      }
+
+      &.is-unflipped {
+        animation-name: card-flip-bounce-back;
+        animation-delay: 0s;
+      }
+
+      .profile-photo {
+        display: block;
+        max-width: 100%;
+        border-radius: inherit;
+        backface-visibility: hidden;
+        background: var(--background-color);
+        transform-style: preserve-3d;
+        transition: filter var(--animation-speed-fast) var(--animation-timing-function-natural);
+
+        &:hover {
+          filter: var(--filter-color-subtle-hint);
+        }
+      }
+
+      .profile-photo-alt {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: rotateY(180deg);
       }
     }
 
-    .profile-photo-alt {
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: rotateY(180deg);
-    }
-  }
+    .header-text {
+      margin: 20px 0;
 
-  header {
-    margin: 20px 0;
+      .header-dominant-text {
+        margin: 0;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        font-family: var(--font-title);
+        line-height: 1;
+      }
 
-    hgroup {
-      margin: 0;
-      margin-top: 20px;
-      margin-bottom: 15px;
-      font-family: var(--font-title);
-      line-height: 1;
-    }
+      h1 {
+        margin: 0;
+        font-size: 36px;
+        font-weight: 800;
+      }
 
-    h1 {
-      margin: 0;
-      font-size: 36px;
-      font-weight: 800;
-    }
+      h2 {
+        margin: 0;
+        margin-top: 5px;
+        font-size: 12px;
+        font-weight: 200;
+        color: var(--text-subtle-color);
+      }
 
-    h2 {
-      margin: 0;
-      margin-top: 5px;
-      font-size: 12px;
-      font-weight: 200;
-      color: var(--text-subtle-color);
-    }
+      h3 {
+        margin: 10px 0;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.25;
+      }
 
-    h3 {
-      margin: 10px 0;
-      font-size: 13px;
-      font-weight: 400;
-      line-height: 1.25;
-    }
-
-    h4 {
-      margin: 10px 0;
-      font-size: 12px;
-      font-weight: 300;
-      line-height: 1.25;
+      h4 {
+        margin: 10px 0;
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 1.25;
+      }
     }
   }
 
