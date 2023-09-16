@@ -362,8 +362,7 @@ a:visited, a:active {
   }
 
   .social-links {
-    display: block;
-    width: 100%;
+    display: flex;
     padding: 0;
     margin: 10px 0;
     list-style: none;
@@ -371,28 +370,17 @@ a:visited, a:active {
     line-height: 0;
 
     li {
-      display: inline-block;
+      display: inline-flex;
       padding: 0;
-      margin: 0 2%;
+      margin: 0;
+      justify-content: center;
+      align-items: center;
 
       a.social-icon {
         display: block;
         text-decoration: none;
-        width: 20px;
-        height: 20px;
-
-        @media (min-width: 360px) {
-          width: 24px;
-          height: 24px;
-        }
-        @media (min-width: 375px) {
-          width: 25px;
-          height: 25px;
-        }
-        @media (min-width: 500px) {
-          width: 28px;
-          height: 28px;
-        }
+        min-width: 20px;
+        max-width: 68%;
 
         svg {
           fill: var(--button-icon-color);
@@ -481,7 +469,7 @@ a:visited, a:active {
       margin: 10px 0px;
     }
 
-	ul {
+    ul {
       margin: 10px 0px;
       padding-left: 30px;
     }
