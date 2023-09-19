@@ -1,0 +1,72 @@
+---
+import '/src/styles/global.scss';
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Trevor Suarez</title>
+        <meta name="description" content="Trevor N. Suarez - Auto enthusiast, music junkie, snowboarder, hobbyist photographer, and digital maker (software engineer). Steez. Life is Good.">
+        <link rel="canonical" href="https://trevorsuarez.com">
+        <link rel="author" href="/humans.txt">
+
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+        <meta name="theme-color" content="#fafafa">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="194x194" href="/images/favicon/favicon-194x194.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/images/launcher-icon/android-chrome-512x512.png">
+        <link rel="icon" type="image/png" sizes="384x384" href="/images/launcher-icon/android-chrome-384x384.png">
+        <link rel="icon" type="image/png" sizes="256x256" href="/images/launcher-icon/android-chrome-256x256.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/images/launcher-icon/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="144x144" href="/images/launcher-icon/android-chrome-144x144.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/images/launcher-icon/android-chrome-96x96.png">
+        <link rel="icon" type="image/png" sizes="72x72" href="/images/launcher-icon/android-chrome-72x72.png">
+        <link rel="icon" type="image/png" sizes="48x48" href="/images/launcher-icon/android-chrome-48x48.png">
+        <link rel="icon" type="image/png" sizes="36x36" href="/images/launcher-icon/android-chrome-36x36.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/images/launcher-icon/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/images/launcher-icon/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/images/launcher-icon/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/images/launcher-icon/apple-touch-icon-60x60.png">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#333333">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="Trevor Suarez">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="msapplication-TileColor" content="#fafafa">
+        <meta name="msapplication-TileImage" content="/images/launcher-icon/mstile-144x144.png">
+        <meta name="application-name" content="Trevor Suarez">
+        <link rel="manifest" href="/manifest.json">
+
+        <meta property="og:title" content="Trevor Suarez">
+        <meta property="og:description" content="Trevor N. Suarez - Auto enthusiast, music junkie, snowboarder, hobbyist photographer, and digital maker (software engineer). Steez. Life is Good.">
+        <meta property="og:type" content="profile">
+        <meta property="og:url" content="https://trevorsuarez.com">
+        <meta property="og:image" content="https://trevorsuarez.com/images/img-20180309_172925-cropped-cleaned-flipped-stylized-square-crop-optimized.jpg">
+        <meta property="profile:first_name" content="Trevor">
+        <meta property="profile:last_name" content="Suarez">
+        <meta property="profile:username" content="Rican7">
+        <meta property="profile:gender" content="male">
+
+        <meta name="google-site-verification" content="bl6UHLhSQ5rod6_f0Y5cmJpbElSDwZAZYnWK1V5VLZQ">
+    </head>
+    <body>
+        <slot />
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-82656608-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-82656608-1');
+        </script>
+        <script>
+            console.log('Trevor says hi 👋');
+        </script>
+    </body>
+</html>

@@ -1,0 +1,438 @@
+---
+import Layout from '/src/layouts/Layout.astro';
+
+import simpleIconFacebook from '/public/images/simple-icons/facebook.svg?raw';
+import simpleIconInstagram from '/public/images/simple-icons/instagram.svg?raw';
+import simpleIconThreads from '/public/images/simple-icons/threads.svg?raw';
+import simpleIconTwitter from '/public/images/simple-icons/twitter.svg?raw';
+import simpleIconTikTok from '/public/images/simple-icons/tiktok.svg?raw';
+import simpleIconYouTube from '/public/images/simple-icons/youtube.svg?raw';
+import simpleIconSpotify from '/public/images/simple-icons/spotify.svg?raw';
+import simpleIconGitHub from '/public/images/simple-icons/github.svg?raw';
+import simpleIconLinkedIn from '/public/images/simple-icons/linkedin.svg?raw';
+import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
+---
+
+<Layout>
+<main class="hero-container">
+    <header>
+        <div class="hero-card-container">
+            <img class="profile-photo" src="/images/img-20180309_172925-cropped-cleaned-flipped-stylized-square-crop-optimized.jpg" width="100%" alt="Trevor Suarez - Profile Photo - Headshot Selfie" loading="eager" />
+            <img class="profile-photo profile-photo-alt" src="/images/img-illustrated-avatar-square.png" width="100%" alt="Trevor Suarez - Profile Photo Alt - Illustrated Avatar" loading="eager" />
+        </div>
+        <div class="header-text">
+            <div class="header-dominant-text">
+                <h1>Trevor Suarez</h1>
+                <h2>he/him/his</h2>
+            </div>
+            <h3>
+                Auto enthusiast, music junkie, snowboarder, hobbyist photographer, and digital maker (software engineer).
+            </h3>
+            <h4>
+                Steez. Life is Good.
+            </h4>
+        </div>
+    </header>
+    <ul class="social-links">
+        <li>
+            <a class="social-icon icon-facebook" title="Facebook - tnsuarez" target="_blank" rel="noopener" href="https://www.facebook.com/tnsuarez">
+                <Fragment set:html={simpleIconFacebook} />
+            </a>
+        </li>
+        <li>
+            <a class="social-icon icon-instagram" title="Instagram - @trevor.n.suarez" target="_blank" rel="noopener" href="https://www.instagram.com/trevor.n.suarez/">
+                <Fragment set:html={simpleIconInstagram} />
+            </a>
+        </li>
+        <li>
+            <a class="social-icon icon-threads" title="Threads - @trevor.n.suarez" target="_blank" rel="noopener" href="https://www.threads.net/@trevor.n.suarez">
+                <Fragment set:html={simpleIconThreads} />
+            </a>
+        </li>
+        <li>
+            <a class="social-icon icon-twitter" title="Twitter - @trevorsuarez" target="_blank" rel="noopener" href="https://twitter.com/trevorsuarez">
+                <Fragment set:html={simpleIconTwitter} />
+            </a>
+        </li>
+        <li>
+            <a class="social-icon icon-tiktok" title="TikTok - @trevor.n.suarez" target="_blank" rel="noopener" href="https://www.tiktok.com/@trevor.n.suarez">
+                <Fragment set:html={simpleIconTikTok} />
+            </a>
+        </li>
+        <li>
+            <a class="social-icon icon-youtube" title="YouTube - TrevorSuarez" target="_blank" rel="noopener" href="https://www.youtube.com/c/TrevorSuarez">
+                <Fragment set:html={simpleIconYouTube} />
+            </a>
+        </li>
+        <li>
+            <a class="social-icon icon-spotify" title="Spotify - Trevor Suarez" target="_blank" rel="noopener" href="https://open.spotify.com/artist/4ctn9rubVjadzZTFzZC9vV">
+                <Fragment set:html={simpleIconSpotify} />
+            </a>
+        </li>
+        <li>
+            <a class="social-icon icon-github" title="GitHub - @Rican7" target="_blank" rel="noopener" href="https://github.com/Rican7">
+                <Fragment set:html={simpleIconGitHub} />
+            </a>
+        </li>
+        <li>
+            <a class="social-icon icon-linkedin" title="LinkedIn - tnsuarez" target="_blank" rel="noopener" href="https://www.linkedin.com/in/tnsuarez">
+                <Fragment set:html={simpleIconLinkedIn} />
+            </a>
+        </li>
+    </ul>
+    <button id="content-expand" type="button" title="Expand Content">
+        <Fragment set:html={uiIconArrowDown} />
+        <span class="button-label">Expand Content</span>
+    </button>
+    <div class="secondary-content closed">
+        <section>
+            <h5>Projects</h5>
+            <section>
+                <h6>Code</h6>
+                <p>I love programming. I've been writing code since I was about 14 years old. I started with modifying some basic Perl scripts, and it grew from there. Here are some of my favorite personal open-source projects, so far:</p>
+                <ul>
+                    <li>
+                        <a title="Code Project - retry" href="https://github.com/Rican7/retry" target="_blank" rel="noopener">retry (Go) - A simple, stateless, functional mechanism to perform actions repetitively until successful.</a>
+                    </li>
+                    <li>
+                        <a title="Code Project - define" href="https://github.com/Rican7/define" target="_blank" rel="noopener">define (Go) - A command-line dictionary (thesaurus) app, with access to multiple sources, written in Go.</a>
+                    </li>
+                    <li>
+                        <a title="Code Project - lieut" href="https://github.com/Rican7/lieut" target="_blank" rel="noopener">lieut (Go) - An opinionated, feature-limited, no external dependency, "micro-framework" for building command line applications in Go.</a>
+                    </li>
+                    <li>
+                        <a title="Code Project - incoming" href="https://github.com/Rican7/incoming" target="_blank" rel="noopener">incoming (PHP) - Transform loose and complex input into consistent, strongly-typed data structures.</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h6>Music</h6>
+                <p>I like to sing (and dance), though really just for fun. Sometimes I record myself and put it on the web:</p>
+                <ul>
+                    <li>
+                        <a title="Music Project - Spotify - Trevor Suarez" href="https://open.spotify.com/artist/4ctn9rubVjadzZTFzZC9vV" target="_blank" rel="noopener">Spotify - Trevor Suarez</a>
+                    </li>
+                    <li>
+                        <a title="Music Project - TikTok - @trevor.n.suarez" href="https://www.tiktok.com/@trevor.n.suarez" target="_blank" rel="noopener">TikTok - @trevor.n.suarez</a>
+                    </li>
+                    <li>
+                        <a title="Music Project - Instagram - @trevorsuarez_lps" href="https://www.instagram.com/trevorsuarez_lps/" target="_blank" rel="noopener">Instagram - @trevorsuarez_lps</a>
+                    </li>
+                    <li>
+                        <a title="Music Project - Facebook - TrevorSuarezMusic" href="https://www.facebook.com/TrevorSuarezMusic/" target="_blank" rel="noopener">Facebook - TrevorSuarezMusic</a>
+                    </li>
+                    <li>
+                        <a title="Music Project - YouTube - TrevorSuarez" href="https://www.youtube.com/c/TrevorSuarez" target="_blank" rel="noopener">YouTube - TrevorSuarez</a>
+                    </li>
+                </ul>
+            </section>
+        </section>
+    </div>
+</main>
+<footer>
+    Copyright © <span id="copyright-year">2023</span> Trevor N. Suarez (Rican7)
+</footer>
+</Layout>
+
+<style lang="scss">
+.hero-container {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 40px 0px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-normal);
+    z-index: 100;
+    text-align: center;
+
+        header {
+            .hero-card-container {
+                position: relative;
+                display: block;
+                max-width: 100%;
+                border-radius: var(--border-radius);
+                box-shadow: var(--box-shadow-normal);
+                cursor: pointer;
+                transform-style: preserve-3d;
+                animation-duration: var(--animation-speed-slow);
+                animation-timing-function: var(--animation-timing-function-natural);
+                animation-fill-mode: both;
+                animation-direction: alternate;
+                transform: translate3d(0, 0, 0);
+                will-change: transform, box-shadow; /* this should include `filter`, but its been broken by Chrome 84... */
+
+                /* initial animation, to be overridden below */
+                animation-name: lift-hint;
+                animation-delay: 2s;
+
+                    &.is-flipped {
+                        animation-name: card-flip-bounce;
+                        animation-delay: 0s;
+                    }
+
+                    &.is-unflipped {
+                        animation-name: card-flip-bounce-back;
+                        animation-delay: 0s;
+                    }
+
+                    .profile-photo {
+                        display: block;
+                        max-width: 100%;
+                        border-radius: inherit;
+                        backface-visibility: hidden;
+                        background: var(--background-color);
+                        transform-style: preserve-3d;
+                        transition: filter var(--animation-speed-fast) var(--animation-timing-function-natural);
+
+                            &:hover {
+                                filter: var(--filter-color-subtle-hint);
+                            }
+                    }
+
+                    .profile-photo-alt {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        transform: rotateY(180deg);
+                    }
+            }
+
+            .header-text {
+                margin: 20px 0;
+
+                    .header-dominant-text {
+                        margin: 0;
+                        margin-top: 20px;
+                        margin-bottom: 15px;
+                        font-family: var(--font-title);
+                        line-height: 1;
+                    }
+
+                    h1 {
+                        margin: 0;
+                        font-size: 36px;
+                        font-weight: 800;
+                    }
+
+                    h2 {
+                        margin: 0;
+                        margin-top: 5px;
+                        font-size: 12px;
+                        font-weight: 200;
+                        color: var(--text-subtle-color);
+                    }
+
+                    h3 {
+                        margin: 10px 0;
+                        font-size: 13px;
+                        font-weight: 400;
+                        line-height: 1.25;
+                    }
+
+                    h4 {
+                        margin: 10px 0;
+                        font-size: 12px;
+                        font-weight: 300;
+                        line-height: 1.25;
+                    }
+            }
+        }
+
+        .social-links {
+            display: flex;
+            padding: 0;
+            margin: 10px 0;
+            list-style: none;
+            font-size: 0;
+            line-height: 0;
+
+                li {
+                    display: inline-flex;
+                    padding: 0;
+                    margin: 0;
+                    justify-content: center;
+                    align-items: center;
+
+                        a.social-icon {
+                            display: block;
+                            text-decoration: none;
+                            min-width: 20px;
+                            max-width: 68%;
+
+                                :global(svg) {
+                                    width: 100%;
+                                    fill: var(--button-icon-color);
+                                    transition: fill var(--animation-speed-normal) var(--animation-timing-function-natural);
+                                }
+                        }
+
+                        a.social-icon:hover :global(svg) {
+                            fill: var(--button-icon-hover-color);
+                        }
+                }
+        }
+
+        #content-expand {
+            display: flex;
+            align-items: center;
+            height: 26px;
+            margin: auto;
+            padding: 0;
+            appearance: none;
+            background: none;
+            border: 0 none;
+            outline: none;
+            cursor: pointer;
+            transition: transform var(--animation-speed-fast) var(--animation-timing-function-natural);
+
+                :global(svg) {
+                    display: block;
+                    width: 48px;
+                    height: auto;
+                    fill: var(--button-subtle-color);
+                    transition: fill var(--animation-speed-normal) var(--animation-timing-function-natural);
+                }
+
+                &:hover :global(svg) {
+                    fill: var(--button-subtle-hover-color);
+                }
+
+                &.opened {
+                    transform: rotate(-180deg);
+                }
+
+                .button-label {
+                    display: block;
+                    width: 0px;
+                    height: 0px;
+                    overflow: hidden;
+                    font-size: 0px;
+                }
+        }
+
+        .secondary-content {
+            max-height: 600px;
+            overflow: hidden;
+            margin: 0px 10px;
+            transition: max-height var(--animation-speed-fast) var(--animation-timing-function-natural);
+            text-align: left;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.25;
+
+                &.closed {
+                    max-height: 0px;
+                }
+
+                h5 {
+                    margin: 10px 0;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+
+                h6 {
+                    margin: 10px 0;
+                    font-size: 15px;
+                    font-weight: 400;
+                }
+
+                p {
+                    margin: 10px 0px;
+                }
+
+                ul {
+                    margin: 10px 0px;
+                    padding-left: 30px;
+                }
+
+                li {
+                    margin: 5px 0px;
+                }
+        }
+}
+
+footer {
+    display: block;
+    position: absolute;
+    width: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    margin: 10px 0;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 100;
+    color: var(--text-very-subtle-color);
+}
+</style>
+
+<script>
+  const heroCardContainerElement = document.querySelector(
+    '.hero-card-container'
+  );
+  const heroImages = heroCardContainerElement.querySelectorAll('img');
+  const contentExpandButton = document.querySelector('#content-expand');
+  const secondaryContentElement = document.querySelector('.secondary-content');
+  const copyrightYearElement = document.querySelector('#copyright-year');
+
+  const classAnimating = 'animating';
+
+  // Generic event listener functions for toggling animation states
+  const fnAnimatingOn = (event) => {
+    event.currentTarget.classList.add(classAnimating);
+  };
+  const fnAnimatingOff = (event) => {
+    event.currentTarget.classList.remove(classAnimating);
+  };
+
+  Array.prototype.forEach.call(heroImages, (element) => {
+    // Eagerly decode the images in the card container, to increase the
+    // performance of the first animation
+    if (typeof element.decode === 'function') {
+      element.decode().then(() => {
+        // Eagerly calculate the element's bounds, before the animation
+        // has to calculate them "just-in-time"
+        element.getBoundingClientRect();
+      });
+    }
+  });
+
+  // Add animation listeners for toggling animation states
+  heroCardContainerElement.addEventListener('animationstart', fnAnimatingOn);
+  heroCardContainerElement.addEventListener('animationend', fnAnimatingOff);
+
+  // Add a click-listener for handling the card flipping
+  heroCardContainerElement.addEventListener('click', () => {
+    // If the element is currently animating...
+    if (heroCardContainerElement.classList.contains(classAnimating)) {
+      // Do nothing and return early, to not interrupt the animation
+      return;
+    }
+
+    const isFlipped = heroCardContainerElement.classList.toggle('is-flipped');
+
+    if (isFlipped) {
+      heroCardContainerElement.classList.remove('is-unflipped');
+    } else {
+      heroCardContainerElement.classList.add('is-unflipped');
+    }
+  });
+
+  // Add a click-listener for handling the content expansion
+  contentExpandButton.addEventListener('click', () => {
+    contentExpandButton.classList.toggle('opened');
+    secondaryContentElement.classList.toggle('closed');
+  });
+
+  // Replace the copyright year with the current year
+  const currentYear = new Date().getFullYear();
+  if (Number(copyrightYearElement.innerText) < currentYear) {
+    copyrightYearElement.innerText = currentYear.toString();
+  }
+</script>
