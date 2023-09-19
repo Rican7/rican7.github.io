@@ -8,7 +8,7 @@ This site is built with [standard web technologies][web-tech], on top of, extend
 
 - [Node.js][nodejs]
 - [npm][npm] (and numerous packages hosted on its registry)
-- [gulp][gulp] (and numerous plugins)
+- [Astro][astro]
 
 ### External Tools
 
@@ -25,7 +25,7 @@ In addition to the tools referenced directly by this project's code, other tools
 [web-tech]: https://developer.mozilla.org/en-US/docs/Web
 [nodejs]: https://nodejs.org/en/
 [npm]: https://www.npmjs.com/
-[gulp]: https://gulpjs.com/
+[astro]: https://astro.build/
 [android-asset-studio]: https://romannurik.github.io/AndroidAssetStudio/
 [realfavicongenerator]: https://realfavicongenerator.net/
 [lighthouse]: https://developers.google.com/web/tools/lighthouse/
