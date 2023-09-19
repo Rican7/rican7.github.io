@@ -1,0 +1,264 @@
+:root {
+    /**
+   * Color scheme
+   */
+    --white: #fafafa;
+    --gray-light: #ddd;
+    --gray-midlight: #bbb;
+    --gray: #888;
+    --gray-middark: #666;
+    --gray-dark: #333;
+    --gray-darker: #222;
+    --black: #050505;
+    --blue: #3333dd;
+    --blue-dark: #3333c0;
+    --blue-light: #3333fa;
+    --light-blue: #33aadd;
+    --light-blue-dark: #33aac0;
+    --light-blue-light: #33aafa;
+
+    --background-color: var(--white);
+    --shadow-color: var(--gray-light);
+    --text-main-color: var(--gray-dark);
+    --text-subtle-color: var(--gray-middark);
+    --text-very-subtle-color: var(--gray);
+    --link-main-color: var(--blue-dark);
+    --link-main-hover-color: var(--blue-light);
+    --button-icon-color: var(--gray-dark);
+    --button-icon-hover-color: var(--blue-light);
+    --button-subtle-color: var(--gray-light);
+    --button-subtle-hover-color: var(--gray);
+    --scrollbar-track-color: var(--white);
+    --scrollbar-track-hover-color: var(--gray-light);
+    --scrollbar-thumb-color: var(--gray-midlight);
+    --scrollbar-thumb-hover-color: var(--gray);
+    --scrollbar-thumb-active-color: var(--gray-middark);
+
+    /**
+   * Fonts
+   */
+    --font-normal: "Roboto Condensed", -apple-system-condensed,
+        SanFranciscoCondensed-Regular, SanFranciscoCondensed,
+        "San Francisco Condensed", AvenirNextCondensed-Regular,
+        AvenirNextCondensed, "Avenir Next Condensed",
+        HelveticaNueueCondensed-Regular, HelveticaNueueCondensed,
+        "Helvetica Neue Condensed", HelveticaCondensed-Regular,
+        HelveticaCondensed, "Helvetica Condensed", sans-serif-condensed,
+        -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue",
+        "Segoe UI", Helvetica, "Arial Condensed", Arial, sans-serif;
+    --font-title: Roboto, -apple-system, BlinkMacSystemFont, "San Francisco",
+        "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+
+    /**
+   * Sizes
+   */
+    --border-radius: 6px;
+
+    /**
+   * Images
+   */
+    --image-transparent-noise: url(/images/noise.png);
+
+    /**
+   * Shared Composites
+   */
+    --background-noise: repeat center/480px var(--image-transparent-noise);
+    --box-shadow-normal: 0 0 16px 2px var(--shadow-color);
+    --box-shadow-mid: 0 0 20px 3px var(--shadow-color);
+    --box-shadow-high: 0 0 24px 4px var(--shadow-color);
+    --filter-color-subtle-hint: saturate(95%) brightness(95%);
+
+    /**
+   * Animations
+   */
+    --animation-speed-normal: 500ms;
+    --animation-speed-fast: 250ms;
+    --animation-speed-slow: 750ms;
+    --animation-timing-function-natural: cubic-bezier(0.4, 0, 1, 1);
+}
+
+/**
+ * Dark mode
+ */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: var(--gray-darker);
+        --shadow-color: var(--black);
+        --text-main-color: var(--gray-light);
+        --text-subtle-color: var(--gray);
+        --text-very-subtle-color: var(--gray-middark);
+        --link-main-color: var(--light-blue-light);
+        --link-main-hover-color: var(--light-blue-dark);
+        --button-icon-color: var(--gray-light);
+        --button-icon-hover-color: var(--blue-light);
+        --button-subtle-color: var(--gray-dark);
+        --button-subtle-hover-color: var(--gray);
+        --scrollbar-track-color: var(--gray-darker);
+        --scrollbar-track-hover-color: var(--black);
+        --scrollbar-thumb-color: var(--gray-midlight);
+        --scrollbar-thumb-hover-color: var(--gray);
+        --scrollbar-thumb-active-color: var(--gray-middark);
+    }
+}
+
+@keyframes card-flip {
+    from {
+        transform: rotateY(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotateY(-90deg) scale(1.1);
+    }
+
+    to {
+        transform: rotateY(-180deg) scale(1);
+    }
+}
+
+@keyframes lift-hint {
+    from {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.01);
+        box-shadow: var(--box-shadow-high);
+        filter: var(--filter-color-subtle-hint);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes card-flip-bounce {
+    from {
+        transform: rotateY(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotateY(-90deg) scale(1.1);
+        box-shadow: var(--box-shadow-high);
+    }
+
+    75% {
+        transform: rotateY(-160deg) scale(1);
+    }
+
+    90% {
+        transform: rotateY(-180deg) scale(1.01);
+        box-shadow: var(--box-shadow-mid);
+    }
+
+    to {
+        transform: rotateY(-180deg) scale(1);
+    }
+}
+
+@keyframes card-flip-bounce-back {
+    from {
+        transform: rotateY(-180deg) scale(1);
+    }
+
+    50% {
+        transform: rotateY(-90deg) scale(1.1);
+        box-shadow: var(--box-shadow-high);
+    }
+
+    75% {
+        transform: rotateY(-20deg) scale(1);
+    }
+
+    90% {
+        transform: rotateY(0deg) scale(1.01);
+        box-shadow: var(--box-shadow-mid);
+    }
+
+    to {
+        transform: rotateY(0deg) scale(1);
+    }
+}
+
+/**
+ * Styles
+ */
+
+html {
+    /* Browser-normalizations */
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    display: flex;
+    width: 100%;
+    min-width: 320px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    perspective: 400vw;
+}
+
+body {
+    overflow-y: scroll;
+    align-items: center;
+    justify-content: center;
+    background: var(--background-color);
+    font-family: var(--font-normal);
+    color: var(--text-main-color);
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: var(--background-noise);
+    opacity: 0.25;
+}
+
+a:link {
+    color: var(--link-main-color);
+    text-decoration: none;
+    transition: color var(--animation-speed-normal)
+        var(--animation-timing-function-natural);
+}
+
+a:hover {
+    color: var(--link-main-hover-color);
+}
+
+a:visited,
+a:active {
+    color: var(--link-main-color);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    border-radius: 0;
+    background-color: var(--scrollbar-track-color);
+
+    &:hover {
+        background-color: var(--scrollbar-track-hover-color);
+    }
+}
+
+::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 100px;
+    background-color: var(--scrollbar-thumb-color);
+    background-clip: padding-box;
+
+    &:hover {
+        background-color: var(--scrollbar-thumb-hover-color);
+    }
+
+    &:active {
+        background-color: var(--scrollbar-thumb-active-color);
+    }
+}

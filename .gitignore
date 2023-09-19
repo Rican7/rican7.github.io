@@ -1,5 +1,12 @@
+# dependencies
 node_modules
-dist
-.tmp
-.publish
-app/service-worker.js
+
+# build output
+dist/
+
+# generated types
+.astro/
+
+# environment variables
+.env
+.env.production
