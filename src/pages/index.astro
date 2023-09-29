@@ -17,8 +17,16 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
 <main class="hero-container">
     <header>
         <div class="hero-card-container">
-            <img class="profile-photo" src="/images/img-profile-photo-headshot.jpg" width="100%" alt="Trevor Suarez - Profile Photo - Headshot Selfie" loading="eager" />
-            <img class="profile-photo profile-photo-alt" src="/images/img-illustrated-avatar-square.png" width="100%" alt="Trevor Suarez - Profile Photo Alt - Illustrated Avatar" loading="eager" />
+            <picture class="profile-photo">
+                <source srcset="/images/img-profile-photo-headshot.avif, /images/img-profile-photo-headshot_1000x.avif 1000w, /images/img-profile-photo-headshot_500x.avif 500w" sizes="(max-width: 320px) 80vw, 100vw" width="1800" height="1800" type="image/avif">
+
+                <img src="/images/img-profile-photo-headshot.jpg" srcset="/images/img-profile-photo-headshot_1000x.jpg 1000w, /images/img-profile-photo-headshot_500x.jpg 500w" sizes="(max-width: 320px) 80vw, 100vw" width="1800" height="1800" alt="Trevor Suarez - Profile Photo - Headshot Selfie" loading="eager" />
+            </picture>
+            <picture class="profile-photo profile-photo-alt">
+                <source srcset="/images/img-illustrated-avatar-square.avif, /images/img-illustrated-avatar-square_1000x.avif 1000w, /images/img-illustrated-avatar-square_500x.avif 500w" sizes="(max-width: 320px) 80vw, 100vw" width="2000" height="2000" type="image/avif">
+
+                <img src="/images/img-illustrated-avatar-square.png" srcset="/images/img-illustrated-avatar-square_1000x.png 1000w, /images/img-illustrated-avatar-square_500x.png 500w" sizes="(max-width: 320px) 80vw, 100vw" width="2000" height="2000" alt="Trevor Suarez - Profile Photo Alt - Illustrated Avatar" loading="eager" />
+            </picture>
         </div>
         <div class="header-text">
             <div class="header-dominant-text">
@@ -182,7 +190,7 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
 
                     .profile-photo {
                         display: block;
-                        max-width: 100%;
+                        width: 100%;
                         border-radius: inherit;
                         backface-visibility: hidden;
                         background: var(--background-color);
@@ -191,6 +199,14 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
 
                             &:hover {
                                 filter: var(--filter-color-subtle-hint);
+                            }
+
+                            img {
+                                display: block;
+                                width: 100%;
+                                height: auto;
+                                max-width: 100%;
+                                border-radius: inherit;
                             }
                     }
 
