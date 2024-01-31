@@ -228,13 +228,15 @@ a:link {
         var(--animation-timing-function-natural);
 }
 
-a:hover {
-    color: var(--link-main-hover-color);
-}
-
 a:visited,
 a:active {
     color: var(--link-main-color);
+}
+
+@media (hover: hover) {
+    a:hover {
+        color: var(--link-main-hover-color);
+    }
 }
 
 ::-webkit-scrollbar {
@@ -243,8 +245,10 @@ a:active {
     border-radius: 0;
     background-color: var(--scrollbar-track-color);
 
-    &:hover {
-        background-color: var(--scrollbar-track-hover-color);
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--scrollbar-track-hover-color);
+        }
     }
 }
 
@@ -254,11 +258,13 @@ a:active {
     background-color: var(--scrollbar-thumb-color);
     background-clip: padding-box;
 
-    &:hover {
-        background-color: var(--scrollbar-thumb-hover-color);
-    }
-
     &:active {
         background-color: var(--scrollbar-thumb-active-color);
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--scrollbar-thumb-hover-color);
+        }
     }
 }

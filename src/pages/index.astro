@@ -197,17 +197,19 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
                         transform-style: preserve-3d;
                         transition: filter var(--animation-speed-fast) var(--animation-timing-function-natural);
 
+                        @media (hover: hover) {
                             &:hover {
                                 filter: var(--filter-color-subtle-hint);
                             }
+                        }
 
-                            img {
-                                display: block;
-                                width: 100%;
-                                height: auto;
-                                max-width: 100%;
-                                border-radius: inherit;
-                            }
+                        img {
+                            display: block;
+                            width: 100%;
+                            height: auto;
+                            max-width: 100%;
+                            border-radius: inherit;
+                        }
                     }
 
                     .profile-photo-alt {
@@ -287,8 +289,10 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
                                 }
                         }
 
-                        a.social-icon:hover :global(svg) {
-                            fill: var(--button-icon-hover-color);
+                        @media (hover: hover) {
+                            a.social-icon:hover :global(svg) {
+                                fill: var(--button-icon-hover-color);
+                            }
                         }
                 }
         }
@@ -314,8 +318,10 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
                     transition: fill var(--animation-speed-normal) var(--animation-timing-function-natural);
                 }
 
-                &:hover :global(svg) {
-                    fill: var(--button-subtle-hover-color);
+                @media (hover: hover) {
+                    &:hover :global(svg) {
+                        fill: var(--button-subtle-hover-color);
+                    }
                 }
 
                 &.opened {
