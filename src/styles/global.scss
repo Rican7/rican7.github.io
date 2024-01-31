@@ -1,7 +1,7 @@
 :root {
     /**
-   * Color scheme
-   */
+     * Color scheme
+     */
     --white: #fafafa;
     --gray-light: #ddd;
     --gray-midlight: #bbb;
@@ -35,8 +35,8 @@
     --scrollbar-thumb-active-color: var(--gray-middark);
 
     /**
-   * Fonts
-   */
+     * Fonts
+     */
     --font-normal: "Roboto Condensed", -apple-system-condensed,
         SanFranciscoCondensed-Regular, SanFranciscoCondensed,
         "San Francisco Condensed", AvenirNextCondensed-Regular,
@@ -50,18 +50,18 @@
         "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
 
     /**
-   * Sizes
-   */
+     * Sizes
+     */
     --border-radius: 6px;
 
     /**
-   * Images
-   */
+     * Images
+     */
     --image-transparent-noise: url(/images/noise.png);
 
     /**
-   * Shared Composites
-   */
+     * Shared Composites
+     */
     --background-noise: repeat center/480px var(--image-transparent-noise);
     --box-shadow-normal: 0 0 16px 2px var(--shadow-color);
     --box-shadow-mid: 0 0 20px 3px var(--shadow-color);
@@ -69,8 +69,8 @@
     --filter-color-subtle-hint: saturate(95%) brightness(95%);
 
     /**
-   * Animations
-   */
+     * Animations
+     */
     --animation-speed-normal: 500ms;
     --animation-speed-fast: 250ms;
     --animation-speed-slow: 750ms;
