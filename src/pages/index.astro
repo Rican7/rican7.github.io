@@ -93,7 +93,7 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
         <span class="button-label">Expand Content</span>
     </button>
     <div class="secondary-content closed">
-        <section>
+        <section class="secondary-content-overflow-trap">
             <h5>Projects</h5>
             <section>
                 <h6>Code</h6>
@@ -332,17 +332,24 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
         }
 
         .secondary-content {
-            max-height: 600px;
+            display: grid;
+            grid-template-rows: 1fr;
+            align-items: start; /* Without this, the transition of grid-template-rows gets weird in the intermediate values */
             overflow: hidden;
             margin: 0px 10px;
-            transition: max-height var(--animation-speed-fast) var(--animation-timing-function-natural);
+            transition: grid-template-rows var(--animation-speed-fast) var(--animation-timing-function-natural);
             text-align: left;
             font-size: 14px;
             font-weight: 300;
             line-height: 1.25;
 
                 &.closed {
-                    max-height: 0px;
+                    grid-template-rows: 0fr;
+                }
+
+                > .secondary-content-overflow-trap {
+                    /* This overflow hidden is needed to allow the grid template rows def to properly constrain the size */
+                    overflow: hidden;
                 }
 
                 h5 {
