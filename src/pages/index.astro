@@ -10,6 +10,7 @@ import simpleIconYouTube from '/public/images/simple-icons/youtube.svg?raw';
 import simpleIconSpotify from '/public/images/simple-icons/spotify.svg?raw';
 import simpleIconGitHub from '/public/images/simple-icons/github.svg?raw';
 import simpleIconLinkedIn from '/public/images/simple-icons/linkedin.svg?raw';
+import brandIconDowntemp from '/public/images/brand-icons/downtemp.svg?raw';
 import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
 ---
 
@@ -65,6 +66,11 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
         <li>
             <a class="social-icon icon-tiktok" title="TikTok - @trevor.n.suarez" target="_blank" rel="me noopener" href="https://www.tiktok.com/@trevor.n.suarez">
                 <Fragment set:html={simpleIconTikTok} />
+            </a>
+        </li>
+        <li>
+            <a class="social-icon icon-downtemp" title="Downtemp - @trevor.n.suarez" target="_blank" rel="me noopener" href="https://downtemp.com/users/@trevor.n.suarez">
+                <Fragment set:html={brandIconDowntemp} />
             </a>
         </li>
         <li>
@@ -327,7 +333,9 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
         }
 
         .social-links {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            row-gap: 16px;
             padding: 0;
             margin: 10px 0;
             list-style: none;
@@ -344,8 +352,9 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
                         a.social-icon {
                             display: block;
                             text-decoration: none;
+                            width: 32px;
                             min-width: 20px;
-                            max-width: 68%;
+                            max-width: 60%;
 
                                 :global(svg) {
                                     width: 100%;
