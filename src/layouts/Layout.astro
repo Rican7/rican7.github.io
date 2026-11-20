@@ -1,5 +1,9 @@
 ---
 import '/src/styles/global.scss';
+import { relMeLinks, buildStructuredData } from '../data/identity';
+
+// Escape `<` so the serialized JSON can never close the script element early
+const structuredDataJson = JSON.stringify(buildStructuredData(Astro.site!)).replace(/</g, '\\u003c');
 ---
 
 <!doctype html>
@@ -52,21 +56,10 @@ import '/src/styles/global.scss';
         <meta property="profile:gender" content="male">
 
         <!-- Identity and relational header links (even invisible links) -->
-        <link rel="me" href="https://www.facebook.com/tnsuarez">
-        <link rel="me" href="https://www.instagram.com/trevor.n.suarez/">
-        <link rel="me" href="https://www.threads.net/@trevor.n.suarez">
-        <link rel="me" href="https://twitter.com/trevorsuarez">
-        <link rel="me" href="https://www.tiktok.com/@trevor.n.suarez">
-        <link rel="me" href="https://www.youtube.com/c/TrevorSuarez">
-        <link rel="me" href="https://open.spotify.com/artist/4ctn9rubVjadzZTFzZC9vV">
-        <link rel="me" href="https://github.com/Rican7">
-        <link rel="me" href="https://www.linkedin.com/in/tnsuarez">
-        <link rel="me" href="https://www.facebook.com/TrevorSuarezMusic/">
-        <link rel="me" href="https://www.instagram.com/trevorsuarez_lps/">
-        <link rel="me" href="https://mastodon.social/@tnsuarez">
-        <link rel="me" href="https://stackexchange.com/users/454669/rican7">
-        <link rel="me" href="https://downtemp.com/users/@trevor.n.suarez">
-        <link rel="me" href="https://downtemp.com/blog/authors/trevor-suarez">
+        {relMeLinks.map((href) => <link rel="me" href={href}>)}
+
+        <!-- Structured data (https://schema.org/) -->
+        <script type="application/ld+json" is:inline set:html={structuredDataJson}></script>
 
         <meta name="google-site-verification" content="bl6UHLhSQ5rod6_f0Y5cmJpbElSDwZAZYnWK1V5VLZQ">
     </head>
