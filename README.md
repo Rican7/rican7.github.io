@@ -10,6 +10,12 @@ This site is built with [standard web technologies][web-tech], on top of, extend
 - [npm][npm] (and numerous packages hosted on its registry)
 - [Astro][astro]
 
+### Service Worker
+
+[`public/service-worker.js`](public/service-worker.js) is a network-first [service worker][service-worker]: the live site always wins when there's a connection, and its cache is only a fallback for when there isn't (or it's very slow).
+
+**Never delete or rename it.** A browser keeps running an installed service worker until it can fetch a *changed* script from the same URL, and a 404 doesn't count, so removing it strands past visitors on whatever their installed worker serves. (That's what happened with the pre-Astro site's `sw-precache` worker, whose cache kept serving the old site.) To retire it, replace its contents with a worker that clears its caches and unregisters itself.
+
 ### External Tools
 
 In addition to the tools referenced directly by this project's code, other tools were used to build this project:
@@ -30,3 +36,4 @@ In addition to the tools referenced directly by this project's code, other tools
 [realfavicongenerator]: https://realfavicongenerator.net/
 [lighthouse]: https://developers.google.com/web/tools/lighthouse/
 [progressive-web-app]: https://developers.google.com/web/progressive-web-apps/
+[service-worker]: https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
