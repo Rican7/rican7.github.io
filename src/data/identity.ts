@@ -1,32 +1,40 @@
 /**
- * Identity data for the site: the profiles that are "me" (used for both the
- * `rel="me"` header links and the JSON-LD `sameAs`), and the JSON-LD
- * structured data graph describing me and the things I've made.
+ * Identity data for the site: the profiles that are "me" (used for the page's
+ * links, the `rel="me"` header links, and the JSON-LD `sameAs`), and the
+ * JSON-LD structured data graph describing me and the things I've made.
  */
 
 /**
- * Profiles that represent me elsewhere on the web.
+ * Profiles that represent me elsewhere on the web, by name.
+ *
+ * This is the single source for these URLs: link to them via this map (e.g.
+ * `profiles.github`) rather than repeating them.
+ */
+export const profiles = {
+  facebook: 'https://www.facebook.com/tnsuarez',
+  instagram: 'https://www.instagram.com/trevor.n.suarez/',
+  threads: 'https://www.threads.com/@trevor.n.suarez',
+  twitter: 'https://twitter.com/trevorsuarez',
+  tiktok: 'https://www.tiktok.com/@trevor.n.suarez',
+  youtube: 'https://www.youtube.com/c/TrevorSuarez',
+  spotify: 'https://open.spotify.com/artist/4ctn9rubVjadzZTFzZC9vV',
+  github: 'https://github.com/Rican7',
+  linkedin: 'https://www.linkedin.com/in/tnsuarez',
+  facebookMusic: 'https://www.facebook.com/TrevorSuarezMusic/',
+  instagramMusic: 'https://www.instagram.com/trevorsuarez_lps/',
+  mastodon: 'https://mastodon.social/@tnsuarez',
+  stackExchange: 'https://stackexchange.com/users/454669/rican7',
+  downtemp: 'https://downtemp.com/users/@trevor.n.suarez',
+  downtempBlogAuthor: 'https://downtemp.com/blog/authors/trevor-suarez',
+} as const;
+
+/**
+ * All of my profiles' URLs.
  *
  * Rendered as `<link rel="me">` in the document head, and included as
  * `sameAs` on the JSON-LD `Person`.
  */
-export const relMeLinks: readonly string[] = [
-  'https://www.facebook.com/tnsuarez',
-  'https://www.instagram.com/trevor.n.suarez/',
-  'https://www.threads.com/@trevor.n.suarez',
-  'https://twitter.com/trevorsuarez',
-  'https://www.tiktok.com/@trevor.n.suarez',
-  'https://www.youtube.com/c/TrevorSuarez',
-  'https://open.spotify.com/artist/4ctn9rubVjadzZTFzZC9vV',
-  'https://github.com/Rican7',
-  'https://www.linkedin.com/in/tnsuarez',
-  'https://www.facebook.com/TrevorSuarezMusic/',
-  'https://www.instagram.com/trevorsuarez_lps/',
-  'https://mastodon.social/@tnsuarez',
-  'https://stackexchange.com/users/454669/rican7',
-  'https://downtemp.com/users/@trevor.n.suarez',
-  'https://downtemp.com/blog/authors/trevor-suarez',
-];
+export const relMeLinks: readonly string[] = Object.values(profiles);
 
 const DOWNTEMP_URL = 'https://downtemp.com/';
 const DOWNTEMP_DESCRIPTION =
@@ -54,8 +62,8 @@ export function buildStructuredData(site: URL) {
     downtempOrganization: `${DOWNTEMP_URL}#organization`,
     downtempWebsite: `${DOWNTEMP_URL}#website`,
     downtempApp: `${DOWNTEMP_URL}#app`,
-    downtempProfilePage: 'https://downtemp.com/users/@trevor.n.suarez',
-    downtempBlogAuthorPage: 'https://downtemp.com/blog/authors/trevor-suarez',
+    downtempProfilePage: profiles.downtemp,
+    downtempBlogAuthorPage: profiles.downtempBlogAuthor,
   };
 
   return {
