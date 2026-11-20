@@ -66,6 +66,17 @@ const structuredDataJson = JSON.stringify(buildStructuredData(Astro.site!)).repl
     <body>
         <slot />
 
+        <!-- Offline fallback (see public/service-worker.js); `updateViaCache` keeps update checks off the HTTP cache -->
+        {import.meta.env.PROD && (
+            <script is:inline>
+                if ('serviceWorker' in navigator) {
+                    window.addEventListener('load', () => {
+                        navigator.serviceWorker.register('/service-worker.js', { updateViaCache: 'none' });
+                    });
+                }
+            </script>
+        )}
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-82656608-1"></script>
         <script>
