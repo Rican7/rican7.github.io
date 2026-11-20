@@ -1,5 +1,6 @@
 ---
 import Layout from '/src/layouts/Layout.astro';
+import { profiles } from '../data/identity';
 
 import simpleIconFacebook from '/public/images/simple-icons/facebook.svg?raw';
 import simpleIconInstagram from '/public/images/simple-icons/instagram.svg?raw';
@@ -10,6 +11,7 @@ import simpleIconYouTube from '/public/images/simple-icons/youtube.svg?raw';
 import simpleIconSpotify from '/public/images/simple-icons/spotify.svg?raw';
 import simpleIconGitHub from '/public/images/simple-icons/github.svg?raw';
 import simpleIconLinkedIn from '/public/images/simple-icons/linkedin.svg?raw';
+import brandIconDowntemp from '/public/images/brand-icons/downtemp.svg?raw';
 import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
 ---
 
@@ -43,47 +45,52 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
     </header>
     <ul class="social-links">
         <li>
-            <a class="social-icon icon-facebook" title="Facebook - tnsuarez" target="_blank" rel="me noopener" href="https://www.facebook.com/tnsuarez">
+            <a class="social-icon icon-facebook" title={`Facebook - ${profiles.facebook.handle}`} target="_blank" rel="me noopener" href={profiles.facebook.url}>
                 <Fragment set:html={simpleIconFacebook} />
             </a>
         </li>
         <li>
-            <a class="social-icon icon-instagram" title="Instagram - @trevor.n.suarez" target="_blank" rel="me noopener" href="https://www.instagram.com/trevor.n.suarez/">
+            <a class="social-icon icon-instagram" title={`Instagram - ${profiles.instagram.handle}`} target="_blank" rel="me noopener" href={profiles.instagram.url}>
                 <Fragment set:html={simpleIconInstagram} />
             </a>
         </li>
         <li>
-            <a class="social-icon icon-threads" title="Threads - @trevor.n.suarez" target="_blank" rel="me noopener" href="https://www.threads.net/@trevor.n.suarez">
+            <a class="social-icon icon-threads" title={`Threads - ${profiles.threads.handle}`} target="_blank" rel="me noopener" href={profiles.threads.url}>
                 <Fragment set:html={simpleIconThreads} />
             </a>
         </li>
         <li>
-            <a class="social-icon icon-twitter" title="Twitter - @trevorsuarez" target="_blank" rel="me noopener" href="https://twitter.com/trevorsuarez">
+            <a class="social-icon icon-twitter" title={`Twitter - ${profiles.twitter.handle}`} target="_blank" rel="me noopener" href={profiles.twitter.url}>
                 <Fragment set:html={simpleIconTwitter} />
             </a>
         </li>
         <li>
-            <a class="social-icon icon-tiktok" title="TikTok - @trevor.n.suarez" target="_blank" rel="me noopener" href="https://www.tiktok.com/@trevor.n.suarez">
+            <a class="social-icon icon-tiktok" title={`TikTok - ${profiles.tiktok.handle}`} target="_blank" rel="me noopener" href={profiles.tiktok.url}>
                 <Fragment set:html={simpleIconTikTok} />
             </a>
         </li>
         <li>
-            <a class="social-icon icon-youtube" title="YouTube - TrevorSuarez" target="_blank" rel="me noopener" href="https://www.youtube.com/c/TrevorSuarez">
+            <a class="social-icon icon-downtemp" title={`Downtemp - ${profiles.downtemp.handle}`} target="_blank" rel="me noopener" href={profiles.downtemp.url}>
+                <Fragment set:html={brandIconDowntemp} />
+            </a>
+        </li>
+        <li>
+            <a class="social-icon icon-youtube" title={`YouTube - ${profiles.youtube.handle}`} target="_blank" rel="me noopener" href={profiles.youtube.url}>
                 <Fragment set:html={simpleIconYouTube} />
             </a>
         </li>
         <li>
-            <a class="social-icon icon-spotify" title="Spotify - Trevor Suarez" target="_blank" rel="me noopener" href="https://open.spotify.com/artist/4ctn9rubVjadzZTFzZC9vV">
+            <a class="social-icon icon-spotify" title={`Spotify - ${profiles.spotify.handle}`} target="_blank" rel="me noopener" href={profiles.spotify.url}>
                 <Fragment set:html={simpleIconSpotify} />
             </a>
         </li>
         <li>
-            <a class="social-icon icon-github" title="GitHub - @Rican7" target="_blank" rel="me noopener" href="https://github.com/Rican7">
+            <a class="social-icon icon-github" title={`GitHub - ${profiles.github.handle}`} target="_blank" rel="me noopener" href={profiles.github.url}>
                 <Fragment set:html={simpleIconGitHub} />
             </a>
         </li>
         <li>
-            <a class="social-icon icon-linkedin" title="LinkedIn - tnsuarez" target="_blank" rel="me noopener" href="https://www.linkedin.com/in/tnsuarez">
+            <a class="social-icon icon-linkedin" title={`LinkedIn - ${profiles.linkedin.handle}`} target="_blank" rel="me noopener" href={profiles.linkedin.url}>
                 <Fragment set:html={simpleIconLinkedIn} />
             </a>
         </li>
@@ -95,6 +102,21 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
     <div class="secondary-content closed">
         <section class="secondary-content-overflow-trap">
             <h5>Projects</h5>
+            <section>
+                <h6>Downtemp</h6>
+                <p>I go out pretty often, hang out with my friends a ton, and generally just do a lot of things, and I got tired of micromanaging group chats to juggle plans and getting replies to my stories like "Dude, I was there! You should've hit me up!" or "Aw man, I would have gone if I knew you were going." So I built a way to see what my friends are up to, tell them what I'm doing, and see who's down to hang out. It's been a labor of love, and I've put my heart and soul into it, so check it out!</p>
+                <ul>
+                    <li>
+                        <a title="Downtemp" target="_blank" rel="noopener" href="https://downtemp.com/">Downtemp - Less planning. More hanging. You down?</a>
+                    </li>
+                    <li>
+                        <a title={`Downtemp - ${profiles.downtemp.handle}`} target="_blank" rel="me noopener" href={profiles.downtemp.url}>Downtemp - {profiles.downtemp.handle}</a>
+                    </li>
+                    <li>
+                        <a title="Downtemp Blog - Why I Built Downtemp" target="_blank" rel="noopener" href="https://downtemp.com/blog/why-i-built-downtemp">The Downtemp Blog - Why I Built Downtemp</a>
+                    </li>
+                </ul>
+            </section>
             <section>
                 <h6>Code</h6>
                 <p>I love programming. I've been writing code since I was about 14 years old. I started with modifying some basic Perl scripts, and it grew from there. Here are some of my favorite personal open-source projects, so far:</p>
@@ -118,19 +140,19 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
                 <p>I like to sing (and dance), though really just for fun. Sometimes I record myself and put it on the web:</p>
                 <ul>
                     <li>
-                        <a title="Music Project - Spotify - Trevor Suarez" target="_blank" rel="me noopener" href="https://open.spotify.com/artist/4ctn9rubVjadzZTFzZC9vV">Spotify - Trevor Suarez</a>
+                        <a title={`Music Project - Spotify - ${profiles.spotify.handle}`} target="_blank" rel="me noopener" href={profiles.spotify.url}>Spotify - {profiles.spotify.handle}</a>
                     </li>
                     <li>
-                        <a title="Music Project - TikTok - @trevor.n.suarez" target="_blank" rel="me noopener" href="https://www.tiktok.com/@trevor.n.suarez">TikTok - @trevor.n.suarez</a>
+                        <a title={`Music Project - TikTok - ${profiles.tiktok.handle}`} target="_blank" rel="me noopener" href={profiles.tiktok.url}>TikTok - {profiles.tiktok.handle}</a>
                     </li>
                     <li>
-                        <a title="Music Project - Instagram - @trevorsuarez_lps" target="_blank" rel="me noopener" href="https://www.instagram.com/trevorsuarez_lps/">Instagram - @trevorsuarez_lps</a>
+                        <a title={`Music Project - Instagram - ${profiles.instagramMusic.handle}`} target="_blank" rel="me noopener" href={profiles.instagramMusic.url}>Instagram - {profiles.instagramMusic.handle}</a>
                     </li>
                     <li>
-                        <a title="Music Project - Facebook - TrevorSuarezMusic" target="_blank" rel="me noopener" href="https://www.facebook.com/TrevorSuarezMusic/">Facebook - TrevorSuarezMusic</a>
+                        <a title={`Music Project - Facebook - ${profiles.facebookMusic.handle}`} target="_blank" rel="me noopener" href={profiles.facebookMusic.url}>Facebook - {profiles.facebookMusic.handle}</a>
                     </li>
                     <li>
-                        <a title="Music Project - YouTube - TrevorSuarez" target="_blank" rel="me noopener" href="https://www.youtube.com/c/TrevorSuarez">YouTube - TrevorSuarez</a>
+                        <a title={`Music Project - YouTube - ${profiles.youtube.handle}`} target="_blank" rel="me noopener" href={profiles.youtube.url}>YouTube - {profiles.youtube.handle}</a>
                     </li>
                 </ul>
             </section>
@@ -138,8 +160,73 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
     </div>
 </main>
 <footer>
-    Copyright © <span id="copyright-year">2023</span> Trevor N. Suarez (Rican7)
+    Copyright © <span id="copyright-year">2026</span> Trevor N. Suarez (Rican7)
 </footer>
+
+<script>
+  const heroCardContainerElement = document.querySelector(
+    '.hero-card-container'
+  );
+  const heroImages = heroCardContainerElement.querySelectorAll('img');
+  const contentExpandButton = document.querySelector('#content-expand');
+  const secondaryContentElement = document.querySelector('.secondary-content');
+  const copyrightYearElement = document.querySelector('#copyright-year');
+
+  const classAnimating = 'animating';
+
+  // Generic event listener functions for toggling animation states
+  const fnAnimatingOn = (event) => {
+    event.currentTarget.classList.add(classAnimating);
+  };
+  const fnAnimatingOff = (event) => {
+    event.currentTarget.classList.remove(classAnimating);
+  };
+
+  Array.prototype.forEach.call(heroImages, (element) => {
+    // Eagerly decode the images in the card container, to increase the
+    // performance of the first animation
+    if (typeof element.decode === 'function') {
+      element.decode().then(() => {
+        // Eagerly calculate the element's bounds, before the animation
+        // has to calculate them "just-in-time"
+        element.getBoundingClientRect();
+      });
+    }
+  });
+
+  // Add animation listeners for toggling animation states
+  heroCardContainerElement.addEventListener('animationstart', fnAnimatingOn);
+  heroCardContainerElement.addEventListener('animationend', fnAnimatingOff);
+
+  // Add a click-listener for handling the card flipping
+  heroCardContainerElement.addEventListener('click', () => {
+    // If the element is currently animating...
+    if (heroCardContainerElement.classList.contains(classAnimating)) {
+      // Do nothing and return early, to not interrupt the animation
+      return;
+    }
+
+    const isFlipped = heroCardContainerElement.classList.toggle('is-flipped');
+
+    if (isFlipped) {
+      heroCardContainerElement.classList.remove('is-unflipped');
+    } else {
+      heroCardContainerElement.classList.add('is-unflipped');
+    }
+  });
+
+  // Add a click-listener for handling the content expansion
+  contentExpandButton.addEventListener('click', () => {
+    contentExpandButton.classList.toggle('opened');
+    secondaryContentElement.classList.toggle('closed');
+  });
+
+  // Replace the copyright year with the current year
+  const currentYear = new Date().getFullYear();
+  if (Number(copyrightYearElement.innerText) < currentYear) {
+    copyrightYearElement.innerText = currentYear.toString();
+  }
+</script>
 </Layout>
 
 <style lang="scss">
@@ -262,7 +349,9 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
         }
 
         .social-links {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            row-gap: 16px;
             padding: 0;
             margin: 10px 0;
             list-style: none;
@@ -279,8 +368,9 @@ import uiIconArrowDown from '/public/images/ui-icons/arrow-down-icon.svg?raw';
                         a.social-icon {
                             display: block;
                             text-decoration: none;
+                            width: 32px;
                             min-width: 20px;
-                            max-width: 68%;
+                            max-width: 60%;
 
                                 :global(svg) {
                                     width: 100%;
@@ -400,68 +490,3 @@ footer {
     color: var(--text-very-subtle-color);
 }
 </style>
-
-<script>
-  const heroCardContainerElement = document.querySelector(
-    '.hero-card-container'
-  );
-  const heroImages = heroCardContainerElement.querySelectorAll('img');
-  const contentExpandButton = document.querySelector('#content-expand');
-  const secondaryContentElement = document.querySelector('.secondary-content');
-  const copyrightYearElement = document.querySelector('#copyright-year');
-
-  const classAnimating = 'animating';
-
-  // Generic event listener functions for toggling animation states
-  const fnAnimatingOn = (event) => {
-    event.currentTarget.classList.add(classAnimating);
-  };
-  const fnAnimatingOff = (event) => {
-    event.currentTarget.classList.remove(classAnimating);
-  };
-
-  Array.prototype.forEach.call(heroImages, (element) => {
-    // Eagerly decode the images in the card container, to increase the
-    // performance of the first animation
-    if (typeof element.decode === 'function') {
-      element.decode().then(() => {
-        // Eagerly calculate the element's bounds, before the animation
-        // has to calculate them "just-in-time"
-        element.getBoundingClientRect();
-      });
-    }
-  });
-
-  // Add animation listeners for toggling animation states
-  heroCardContainerElement.addEventListener('animationstart', fnAnimatingOn);
-  heroCardContainerElement.addEventListener('animationend', fnAnimatingOff);
-
-  // Add a click-listener for handling the card flipping
-  heroCardContainerElement.addEventListener('click', () => {
-    // If the element is currently animating...
-    if (heroCardContainerElement.classList.contains(classAnimating)) {
-      // Do nothing and return early, to not interrupt the animation
-      return;
-    }
-
-    const isFlipped = heroCardContainerElement.classList.toggle('is-flipped');
-
-    if (isFlipped) {
-      heroCardContainerElement.classList.remove('is-unflipped');
-    } else {
-      heroCardContainerElement.classList.add('is-unflipped');
-    }
-  });
-
-  // Add a click-listener for handling the content expansion
-  contentExpandButton.addEventListener('click', () => {
-    contentExpandButton.classList.toggle('opened');
-    secondaryContentElement.classList.toggle('closed');
-  });
-
-  // Replace the copyright year with the current year
-  const currentYear = new Date().getFullYear();
-  if (Number(copyrightYearElement.innerText) < currentYear) {
-    copyrightYearElement.innerText = currentYear.toString();
-  }
-</script>
