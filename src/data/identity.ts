@@ -13,7 +13,7 @@
 export const relMeLinks: readonly string[] = [
   'https://www.facebook.com/tnsuarez',
   'https://www.instagram.com/trevor.n.suarez/',
-  'https://www.threads.net/@trevor.n.suarez',
+  'https://www.threads.com/@trevor.n.suarez',
   'https://twitter.com/trevorsuarez',
   'https://www.tiktok.com/@trevor.n.suarez',
   'https://www.youtube.com/c/TrevorSuarez',
