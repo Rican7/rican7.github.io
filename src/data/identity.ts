@@ -5,27 +5,74 @@
  */
 
 /**
- * Profiles that represent me elsewhere on the web, by name.
+ * Profiles that represent me elsewhere on the web, by name, with their URL
+ * and the handle (or display name) I go by there.
  *
- * This is the single source for these URLs: link to them via this map (e.g.
- * `profiles.github`) rather than repeating them.
+ * This is the single source for these: link to them via this map (e.g.
+ * `profiles.github.url` and `profiles.github.handle`) rather than repeating
+ * them.
  */
 export const profiles = {
-  facebook: 'https://www.facebook.com/tnsuarez',
-  instagram: 'https://www.instagram.com/trevor.n.suarez/',
-  threads: 'https://www.threads.com/@trevor.n.suarez',
-  twitter: 'https://twitter.com/trevorsuarez',
-  tiktok: 'https://www.tiktok.com/@trevor.n.suarez',
-  youtube: 'https://www.youtube.com/c/TrevorSuarez',
-  spotify: 'https://open.spotify.com/artist/4ctn9rubVjadzZTFzZC9vV',
-  github: 'https://github.com/Rican7',
-  linkedin: 'https://www.linkedin.com/in/tnsuarez',
-  facebookMusic: 'https://www.facebook.com/TrevorSuarezMusic/',
-  instagramMusic: 'https://www.instagram.com/trevorsuarez_lps/',
-  mastodon: 'https://mastodon.social/@tnsuarez',
-  stackExchange: 'https://stackexchange.com/users/454669/rican7',
-  downtemp: 'https://downtemp.com/users/@trevor.n.suarez',
-  downtempBlogAuthor: 'https://downtemp.com/blog/authors/trevor-suarez',
+  facebook: {
+    url: 'https://www.facebook.com/tnsuarez',
+    handle: 'tnsuarez',
+  },
+  instagram: {
+    url: 'https://www.instagram.com/trevor.n.suarez/',
+    handle: '@trevor.n.suarez',
+  },
+  threads: {
+    url: 'https://www.threads.com/@trevor.n.suarez',
+    handle: '@trevor.n.suarez',
+  },
+  twitter: {
+    url: 'https://twitter.com/trevorsuarez',
+    handle: '@trevorsuarez',
+  },
+  tiktok: {
+    url: 'https://www.tiktok.com/@trevor.n.suarez',
+    handle: '@trevor.n.suarez',
+  },
+  youtube: {
+    url: 'https://www.youtube.com/c/TrevorSuarez',
+    handle: 'TrevorSuarez',
+  },
+  spotify: {
+    url: 'https://open.spotify.com/artist/4ctn9rubVjadzZTFzZC9vV',
+    handle: 'Trevor Suarez',
+  },
+  github: {
+    url: 'https://github.com/Rican7',
+    handle: '@Rican7',
+  },
+  linkedin: {
+    url: 'https://www.linkedin.com/in/tnsuarez',
+    handle: 'tnsuarez',
+  },
+  facebookMusic: {
+    url: 'https://www.facebook.com/TrevorSuarezMusic/',
+    handle: 'TrevorSuarezMusic',
+  },
+  instagramMusic: {
+    url: 'https://www.instagram.com/trevorsuarez_lps/',
+    handle: '@trevorsuarez_lps',
+  },
+  mastodon: {
+    url: 'https://mastodon.social/@tnsuarez',
+    handle: '@tnsuarez',
+  },
+  stackExchange: {
+    url: 'https://stackexchange.com/users/454669/rican7',
+    handle: 'Rican7',
+  },
+  downtemp: {
+    url: 'https://downtemp.com/users/@trevor.n.suarez',
+    handle: '@trevor.n.suarez',
+  },
+  downtempBlogAuthor: {
+    url: 'https://downtemp.com/blog/authors/trevor-suarez',
+    handle: 'Trevor Suarez',
+  },
 } as const;
 
 /**
@@ -34,7 +81,9 @@ export const profiles = {
  * Rendered as `<link rel="me">` in the document head, and included as
  * `sameAs` on the JSON-LD `Person`.
  */
-export const relMeLinks: readonly string[] = Object.values(profiles);
+export const relMeLinks: readonly string[] = Object.values(profiles).map(
+  (profile) => profile.url,
+);
 
 const DOWNTEMP_URL = 'https://downtemp.com/';
 const DOWNTEMP_DESCRIPTION =
@@ -62,8 +111,8 @@ export function buildStructuredData(site: URL) {
     downtempOrganization: `${DOWNTEMP_URL}#organization`,
     downtempWebsite: `${DOWNTEMP_URL}#website`,
     downtempApp: `${DOWNTEMP_URL}#app`,
-    downtempProfilePage: profiles.downtemp,
-    downtempBlogAuthorPage: profiles.downtempBlogAuthor,
+    downtempProfilePage: profiles.downtemp.url,
+    downtempBlogAuthorPage: profiles.downtempBlogAuthor.url,
   };
 
   return {
