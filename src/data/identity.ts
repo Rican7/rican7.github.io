@@ -86,17 +86,16 @@ export const relMeLinks: readonly string[] = Object.values(profiles).map(
 );
 
 const DOWNTEMP_URL = 'https://downtemp.com/';
-const DOWNTEMP_DESCRIPTION =
-  'See what your friends are actually up to. Share quick hangs or full events, chat instantly, and stay updated. Less planning. More hanging. You down?';
-
 const DO_WHILE_PROGRESS_URL = 'https://dowhileprogress.com/';
-const DO_WHILE_PROGRESS_SLOGAN = 'Always progressing. Always in progress.';
 
 /**
  * Builds the JSON-LD structured data graph for the site.
  *
- * The `@id`s for Downtemp's nodes match the ones published on downtemp.com
- * itself, so that the graphs can be joined.
+ * Only the `Person` (me) is described in full here. Downtemp and Do While
+ * Progress describe themselves on their own sites, under the same `@id`s,
+ * so their nodes here are references: just enough to identify them (name
+ * and URL), plus how they relate to me. Copying more of their details
+ * would only leave copies to go stale.
  *
  * @see https://schema.org/
  * @see https://developers.google.com/search/docs/appearance/structured-data/profile-page
@@ -109,10 +108,7 @@ export function buildStructuredData(site: URL) {
     person: `${siteUrl}#person`,
     doWhileProgress: `${DO_WHILE_PROGRESS_URL}#organization`,
     downtempOrganization: `${DOWNTEMP_URL}#organization`,
-    downtempWebsite: `${DOWNTEMP_URL}#website`,
     downtempApp: `${DOWNTEMP_URL}#app`,
-    downtempProfilePage: profiles.downtemp.url,
-    downtempBlogAuthorPage: profiles.downtempBlogAuthor.url,
   };
 
   return {
@@ -142,71 +138,23 @@ export function buildStructuredData(site: URL) {
         '@type': 'Organization',
         '@id': ids.doWhileProgress,
         name: 'Do While Progress',
-        legalName: 'Do While Progress LLC',
         url: DO_WHILE_PROGRESS_URL,
-        slogan: DO_WHILE_PROGRESS_SLOGAN,
-        description: DO_WHILE_PROGRESS_SLOGAN,
-        logo: `${DO_WHILE_PROGRESS_URL}images/app-icons/icon-512.png`,
         founder: { '@id': ids.person },
-        subOrganization: { '@id': ids.downtempOrganization },
       },
       {
         '@type': 'Organization',
         '@id': ids.downtempOrganization,
         name: 'Downtemp',
         url: DOWNTEMP_URL,
-        logo: `${DOWNTEMP_URL}images/downtemp-pict-mark.png`,
         founder: { '@id': ids.person },
         parentOrganization: { '@id': ids.doWhileProgress },
-        sameAs: [
-          'https://downtemp.shop/',
-          'https://www.instagram.com/downtempapp',
-          'https://www.threads.com/@downtempapp',
-          'https://www.tiktok.com/@downtempapp',
-          'https://x.com/downtempapp',
-          'https://www.facebook.com/downtempapp/',
-        ],
-      },
-      {
-        '@type': 'WebSite',
-        '@id': ids.downtempWebsite,
-        name: 'Downtemp',
-        url: DOWNTEMP_URL,
-        description: DOWNTEMP_DESCRIPTION,
-        publisher: { '@id': ids.downtempOrganization },
       },
       {
         '@type': 'SoftwareApplication',
         '@id': ids.downtempApp,
         name: 'Downtemp',
         url: DOWNTEMP_URL,
-        description:
-          "Downtemp is a free app for making plans with friends. See what they're actually up to, say you're down, and figure out the rest in the chat.",
-        applicationCategory: 'SocialNetworkingApplication',
-        operatingSystem: 'Web',
-        offers: {
-          '@type': 'Offer',
-          price: '0',
-          priceCurrency: 'USD',
-        },
-        publisher: { '@id': ids.downtempOrganization },
         creator: { '@id': ids.person },
-      },
-      {
-        '@type': 'ProfilePage',
-        '@id': ids.downtempProfilePage,
-        url: ids.downtempProfilePage,
-        name: 'Trevor Suarez (@trevor.n.suarez) on Downtemp',
-        isPartOf: { '@id': ids.downtempWebsite },
-        mainEntity: { '@id': ids.person },
-      },
-      {
-        '@type': 'ProfilePage',
-        '@id': ids.downtempBlogAuthorPage,
-        url: ids.downtempBlogAuthorPage,
-        name: 'Trevor Suarez - The Downtemp Blog',
-        isPartOf: { '@id': ids.downtempWebsite },
-        mainEntity: { '@id': ids.person },
       },
     ],
   };
